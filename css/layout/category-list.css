@@ -18,7 +18,7 @@
   font-weight: 600;
   padding: 28px;
   cursor: pointer;
-  width: 80%;
+  width: 40%;
 redefine-tablet()
 redefine-mobile()
   background-color: var(--second-background-color);
