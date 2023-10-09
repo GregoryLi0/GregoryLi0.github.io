@@ -63,8 +63,9 @@ hexo.extend.helper.register("createNewArchivePosts", function (posts) {
 hexo.extend.helper.register(
   "getAuthorLabel",
   function (postCount, isAuto, labelList) {
-    let level = Math.floor(Math.log2(postCount));
-    level = level < 2 ? 1 : level - 1;
+    let level = Math.floor(postCount / 5) + 1;
+    // let level = Math.floor(Math.log2(postCount));
+    // level = level < 2 ? 1 : level - 1;
 
     if (isAuto === false && Array.isArray(labelList) && labelList.length > 0) {
       return level > labelList.length

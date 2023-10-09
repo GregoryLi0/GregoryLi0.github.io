@@ -53,7 +53,7 @@ global:
       family:  # Font family
       url:  # Font URL to CSS file
   # Content max width
-  content_max_width: 1600px
+  content_max_width: 1400px
   # Sidebar width
   sidebar_width: 210px
   # Effects on mouse hover
@@ -106,10 +106,10 @@ home_banner:
     light: /images/wallhaven-wqery6-light.webp # light mode
     dark: /images/wallhaven-wqery6-dark.webp # dark mode
   # Home banner title
-  title: Theme Redefine
+  title: Gregory's Gallery
   # Home banner subtitle
   subtitle:
-    text: [] # subtitle text, array
+    text: ["Still developing", "Please wait... :("] # subtitle text, array
     hitokoto:  # 一言配置
       enable: false # Whether to enable hitokoto
       api: https://v1.hitokoto.cn # API URL, can add types, see https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
@@ -142,14 +142,14 @@ home_banner:
   # Home banner social links
   social_links:
     # Whether to enable
-    enable: false
+    enable: true
     # Social links
     links:
-      github:  # your GitHub URL
-      instagram: # your Instagram URL
-      zhihu:  # your ZhiHu URL
-      twitter:  # your twitter URL
-      email:  # your email
+      github: https://github.com/GregoryLi0 # your GitHub URL
+      # instagram: # your Instagram URL
+      # zhihu:  # your ZhiHu URL
+      # twitter:  # your twitter URL
+      email:  gregoryli@foxmail.com # your email address
       # ...... # you can add more
     # Social links with QRcode drawers
     qrs:
@@ -210,8 +210,8 @@ home:
   sidebar:
     enable: true # Whether to enable sidebar
     position: left # Sidebar position. left, right
-    first_item: menu # First item in sidebar. menu, info
-    announcement: # Announcement text
+    first_item: info # First item in sidebar. menu, info
+    announcement: Still developing, please wait... # Announcement text
     links:
       # Archives: 
       #   path: /archives 
@@ -224,7 +224,7 @@ home:
       #   icon: fa-regular fa-folder # can be empty
       # ...... # you can add more
   # Article date format
-  article_date_format: auto # auto, relative, YYYY-MM-DD, YYYY-MM-DD HH:mm:ss etc.
+  article_date_format: YYYY-MM-DD # auto, relative, YYYY-MM-DD, YYYY-MM-DD HH:mm:ss etc.
   # Article categories visibility
   categories:
     enable: true  # Whether to enable
@@ -272,7 +272,7 @@ articles:
     expand: true # Whether to expand TOC
     init_open: true # Open toc by default
   # Whether to enable copyright notice
-  copyright: true
+  copyright: false
   # Whether to enable lazyload for images
   lazyload: true
   # Article recommendation. Requires nodejieba (npm install nodejieba). Transplanted from hexo-theme-volantis.
