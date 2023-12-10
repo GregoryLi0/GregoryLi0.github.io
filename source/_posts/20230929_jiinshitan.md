@@ -1,11 +1,11 @@
 ---
-title: 2023-10-06 大连-白云山
-cover_image: imgs/covers/baiyunshan.jpg
-thumbnail: imgs/covers/baiyunshan.jpg
-excerpt: 林深时见鹿，溪午不闻钟。
+title: 2023-09-29 大连-金石滩
+cover_image: imgs/covers/jinshitan.jpg
+thumbnail: imgs/covers/jinshitan.jpg
+excerpt: 2023-09-24 拍摄于大连金石滩
 ---
 
-2023-10-06 拍摄于大连白云山
+2023-09-24 拍摄于大连金石滩。
 
 <script data-swup-reload-script>
 function resizelframe() var iframe =
@@ -13,6 +13,6 @@ document.getElementByld("mylframe"):var iframeHeiaht =
 iframe.contentWindow.document.body.scrollHeight; iframe.height = iframeHeight;
 </script>
 <iframe id="mylframe"
-height=2010px width=100% scrolling=no
-src="/htmls/20231006_baiyunshan_masonry.html"
+height=1250px width=100% scrolling=no
+src="/htmls/20230930_jinshitan_masonry.html"
 onload="resizelframe()"></iframe>
