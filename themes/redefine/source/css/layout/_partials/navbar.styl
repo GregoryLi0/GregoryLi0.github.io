@@ -1,7 +1,7 @@
-$logo-title-font-size = 2rem
+$logo-title-font-size = 1.7rem
 $desktop-search-icon-font-size = 1.5rem
 $navbar-bar-line-height = 2.5px
-$logo-image-box-width = 46px
+$logo-image-box-width = 34px
 
 @import '../../common/variables'
 
@@ -47,18 +47,18 @@ $logo-image-box-width = 46px
     .left
       display flex
       align-items center
-      transform-origin left
-      transition-t('transform', '0', '0.2', 'linear')
-
-      .navbar-shrink &
-        transform scale(0.72)
-        transform-origin left
+      //transform-origin bottom
+      //transition-t('transform', '0', '0.15', 'ease')
+      //
+      //.navbar-shrink &
+      //  transform scale(0.9)
+      //  transform-origin bottom
 
       if (hexo-config('defaults.logo') && hexo-config('defaults.logo') != '')
         .logo-image
           width $logo-image-box-width
           height $logo-image-box-width
-          margin-right 8px
+          margin-right 12px
 
           +redefine-tablet()
             width: $logo-image-box-width * 0.9
@@ -75,9 +75,10 @@ $logo-image-box-width = 46px
       .logo-title
         font-size $logo-title-font-size
         font-weight 520
-        // letter-spacing 1px
+        //letter-spacing 1px
         line-height 1
         color var(--first-text-color)
+        transform translateY(1px)
 
         h1
           margin 0
@@ -86,6 +87,7 @@ $logo-image-box-width = 46px
           //letter-spacing 1px
           line-height 1
           color var(--first-text-color)
+          transform translateY(1px)
 
           +redefine-tablet()
             font-size: $logo-title-font-size * 0.9
@@ -126,6 +128,23 @@ $logo-image-box-width = 46px
               transform rotate(0deg)
               transition transform 0.3s ease
 
+            a, .active
+              &::after
+                content ''
+                position absolute
+                bottom -5px
+                left 50%
+                width 100%
+                height 2px
+                transform translate3d(-50%, -5px, 0)
+                border-radius $redefine-border-radius-large
+                background var(--primary-color)
+                opacity 0
+                transition-t('transform, bottom, opacity', '0.2, 0.2, 0.2', '0.2, 0.2, 0.2', 'ease, ease, ease')
+
+                .navbar-shrink &
+                  bottom -($navbar-shrink-height / 2 - 17)
+
             &:hover a .fa-chevron-down
               transform rotate(180deg)
 
@@ -135,16 +154,9 @@ $logo-image-box-width = 46px
 
             &:hover a, .active
               &::after
-                content ''
-                position absolute
-                bottom -5px
-                left 50%
-                width 100%
-                height 2px
-                transform translateX(-50%)
-                border-radius $redefine-border-radius-large
-                background var(--primary-color)
-                transition-t('transform, bottom', '0, 0', '0.2, 0.2', 'linear, linear')
+                transform translate3d(-50%, 0, 0)
+                opacity 1
+                transition-t('transform, bottom, opacity', '0, 0, 0', '0.2, 0.2, 0.2', 'ease, ease, ease')
 
                 .navbar-shrink &
                   bottom -($navbar-shrink-height / 2 - 17)
@@ -259,15 +271,15 @@ $logo-image-box-width = 46px
 
   .navbar-drawer
     padding $navbar-height 0 20px 0
-    transform scaleY(0)
+    transform translateX(100%)
     transform-origin top
     z-index $z-index-2
-    opacity 0
-    transition-t('transform,opacity', '0,0.1', '0.38,0.38', 'ease,ease')
+    height 100vh
+    overflow-y auto
+    transition-t('transform', '0', '0.38', 'ease')
 
     .navbar-drawer-show &
-      transform scaleY(1)
-      opacity 1
+      transform translateX(0)
 
   .window-mask
     position absolute
@@ -286,3 +298,16 @@ $logo-image-box-width = 46px
 
 .navbar-drawer-show
   overflow hidden
+
+[data-target] {
+  display: block; /* or flex, depending on your layout */
+  overflow: hidden;
+}
+
+[data-target] .submenu-item {
+  opacity: 0;
+}
+
+.icon-rotated {
+  transform: rotate(90deg);
+}

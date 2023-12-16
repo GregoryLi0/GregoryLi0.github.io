@@ -341,15 +341,15 @@ function userInterface(recommendedArticles, cfg) {
     htmlMobile += itemInterface(itemMobile);
   }
   return `
-  <div class="recommended-article">
+  <div class="recommended-article px-2 sm:px-6 md:px-8">
    <div class="recommended-desktop">
-    <div class="recommended-article-header">
+    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>${cfg.title}</span>
     </div>
     <div class="recommended-article-group">${html}</div>
    </div>
    <div class="recommended-mobile">
-   <div class="recommended-article-header">
+   <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>${cfg.title}</span>
    </div>
    <div class="recommended-article-group">${htmlMobile}</div>
