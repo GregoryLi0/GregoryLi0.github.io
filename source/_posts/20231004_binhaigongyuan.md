@@ -1,8 +1,9 @@
 ---
 title: 2023-10-04 大连-滨海公园
-cover_image: imgs/covers/binhaigongyuan.jpg
-thumbnail: imgs/covers/binhaigongyuan.jpg
+cover_image: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/binhaigongyuan.jpg
+thumbnail: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/binhaigongyuan.jpg
 excerpt: 傍晚时分到华灯初上，用十张照片定格日暮的光辉。
+data: 2023-10-04
 ---
 
 寒风中数小时的等待，组成一张照片。

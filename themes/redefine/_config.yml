@@ -103,17 +103,17 @@ home_banner:
   style: fixed # static or fixed
   # Home banner image
   image: 
-    light: /images/wallhaven-wqery6-light.webp # light mode
-    dark: /images/wallhaven-wqery6-dark.webp # dark mode
+    light: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/wallhaven-wqery6-light.webp # light mode
+    dark: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/wallhaven-wqery6-dark.webp # dark mode
   # Home banner title
   title: Gregory's Gallery
   # Home banner subtitle
   subtitle:
-    text: ["Still developing", "Please wait... :("] # subtitle text, array
+    text: ["Scroll down to view my photos...", "Welcome :)"] # subtitle text, array
     hitokoto:  # 一言配置
       enable: false # Whether to enable hitokoto
       api: https://v1.hitokoto.cn # API URL, can add types, see https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
-    typing_speed: 150 # Typing speed (ms)
+    typing_speed: 100 # Typing speed (ms)
     backing_speed: 80 # Backing speed (ms)
     starting_delay: 500 # Start delay (ms)
     backing_delay: 1500 # Backing delay (ms)
