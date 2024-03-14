@@ -8,6 +8,7 @@ date: 2024-03-13
 {% note  %}
 内网穿透参见:[使用SSH优雅连接在家里的主机/](https://xiaoyanfufu.gitee.io/2024/02/25/%E4%BD%BF%E7%94%A8SSH%E4%BC%98%E9%9B%85%E8%BF%9E%E6%8E%A5%E5%9C%A8%E5%AE%B6%E9%87%8C%E7%9A%84%E4%B8%BB%E6%9C%BA/) 
 {% endnote %}
+
 因为要在外网连接ubuntu电脑,需要配置内网穿透。使用Natapp的免费隧道进行穿透(选择tcp),下载natapp,更改权限`chmod a+x natapp`,配置config.ini (参见[NATAPP1分钟快速新手图文教程](https://natapp.cn/article/natapp_newbie)) 并运行natapp.得到natappfree的网址和端口.(注意每次打开端口号会变)
 
 
