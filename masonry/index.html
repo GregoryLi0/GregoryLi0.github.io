@@ -19,12 +19,12 @@
     <meta name="revisit-after" content="1 days">
     
         <meta property="og:type" content="website">
-<meta property="og:title" content="2023-10-6 白云山">
+<meta property="og:title" content="Gregory&#39;s Gallery">
 <meta property="og:url" content="http://example.com/masonry/index.html">
 <meta property="og:site_name" content="Gregory&#39;s Gallery">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-14T03:45:14.000Z">
-<meta property="article:modified_time" content="2023-10-08T05:48:28.000Z">
+<meta property="article:modified_time" content="2024-03-14T07:03:38.000Z">
 <meta property="article:author" content="Gregory">
 <meta name="twitter:card" content="summary">
     
@@ -38,10 +38,164 @@
     
     <title>
         
-            2023-10-6 白云山 -
-        
-        Gregory&#39;s Backyard
+        Gregory&#39;s Gallery
     </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        Gregory&#39;s Gallery
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
     
 <link rel="stylesheet" href="/css/style.css">
 
@@ -58,9 +212,6 @@
     
 <link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
 
-    
-<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
-
     <!--- Font Part-->
     
     
@@ -71,7 +222,7 @@
     
     <script id="hexo-configurations">
     window.config = {"hostname":"example.com","root":"/","language":"zh-CN"};
-    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":false,"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1400px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js","enable":false,"site_pv":false,"site_uv":false,"post_pv":false},"single_page":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Gregory's Gallery","subtitle":{"text":["Still developing","Please wait... :("],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"links":{"github":"https://github.com/GregoryLi0","email":"gregoryli@foxmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.5.0","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"相册":{"icon":"fa-solid fa-image","path":"/masonry/"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"info","announcement":"Still developing, please wait...","links":null},"article_date_format":"YYYY-MM-DD","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}}};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left"},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"all_rights_reserved"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js","enable":false,"site_pv":false,"site_uv":false,"post_pv":false},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/wallhaven-wqery6-light.webp","dark":"https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/wallhaven-wqery6-dark.webp"},"title":"Gregory's Gallery","subtitle":{"text":["Scroll down to view my photos...","Welcome :)"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"links":{"github":"https://github.com/GregoryLi0","email":"gregoryli@foxmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.0","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"相册":{"icon":"fa-solid fa-image","path":"/masonry/"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"info","announcement":"Still developing, please wait...","links":null},"article_date_format":"YYYY-MM-DD","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}}};
     window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
     window.data = {"masonry":true};
   </script>
@@ -102,9 +253,9 @@
 
     
         <span class="pjax-progress-bar"></span>
-        <span class="swup-progress-icon">
-            <i class="fa-solid fa-circle-notch fa-spin"></i>
-        </span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
     
 </div>
 
@@ -118,13 +269,13 @@
 
         <div class="main-content-header">
             <header class="navbar-container">
-    
+
     <div class="navbar-content">
         <div class="left">
             
             <a class="logo-title" href="/">
                 
-                Gregory&#39;s Backyard
+                Gregory&#39;s Gallery
                 
             </a>
         </div>
@@ -135,33 +286,35 @@
                 <ul class="navbar-list">
                     
                         
+                            
+
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class="" 
-                                    href="/"  >
-                                    
-                                        
-                                            <i class="fa-regular fa-house"></i>
-                                        
-                                        首页
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
                                     
                                 </a>
+
                                 <!-- Submenu -->
                                 
                             </li>
                     
                         
+                            
+
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class="active" 
-                                    href="/masonry/"  >
-                                    
-                                        
-                                            <i class="fa-solid fa-image"></i>
-                                        
-                                        相册
+                                <a class="active"
+                                   href="/masonry/"
+                                        >
+                                    <i class="fa-solid fa-image fa-fw"></i>
+                                    相册
                                     
                                 </a>
+
                                 <!-- Submenu -->
                                 
                             </li>
@@ -180,41 +333,65 @@
     </div>
 
     <!-- Mobile drawer -->
-    <div class="navbar-drawer w-full absolute top-0 left-0 bg-background-color">
-        <ul class="drawer-navbar-list flex flex-col justify-start items-center">
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
             
                 
-                    <li class="drawer-navbar-item text-base my-1.5 flex justify-center items-center">
-                        <a class="rounded-3xl py-1.5 px-5 hover:border hover:!text-primary active:!text-primary group " 
-                        href="/"  >
-                             
-                                
-                                    <i class="fa-regular fa-house"></i>
-                                
-                                首页
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
                     
-            
-                
-                    <li class="drawer-navbar-item text-base my-1.5 flex justify-center items-center">
-                        <a class="rounded-3xl py-1.5 px-5 hover:border hover:!text-primary active:!text-primary group active" 
-                        href="/masonry/"  >
-                             
-                                
-                                    <i class="fa-solid fa-image"></i>
-                                
-                                相册
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                    
-            
 
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/masonry/"
+                        >
+                            <span>
+                                相册
+                            </span>
+                            
+                                <i class="fa-solid fa-image fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
         </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">12</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
     </div>
 
     <div class="window-mask"></div>
@@ -237,7 +414,7 @@
     
         
 
-<h1 class="page-title-header">2023-10-6 白云山</h1>
+<h1 class="page-title-header"></h1>
   
 <div class="loading-placeholder">
     <div class="flex-grid generic-card">
@@ -251,608 +428,1848 @@
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-15.jpg" alt="20231006-15">
-            <div class="image-title">20231006-15</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-1.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-1">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-1</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-16.jpg" alt="20231006-16">
-            <div class="image-title">20231006-16</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-10.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-10">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-10</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-17.jpg" alt="20231006-17">
-            <div class="image-title">20231006-17</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-11.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-11">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-11</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-18.jpg" alt="20231006-18">
-            <div class="image-title">20231006-18</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-12.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-12">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-12</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-20.jpg" alt="20231006-20">
-            <div class="image-title">20231006-20</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-13.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-13">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-13</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-21.jpg" alt="20231006-21">
-            <div class="image-title">20231006-21</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-14.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-14">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-14</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-22.jpg" alt="20231006-22">
-            <div class="image-title">20231006-22</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-15.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-15">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-15</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-23.jpg" alt="20231006-23">
-            <div class="image-title">20231006-23</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-16.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-16">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-16</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-25.jpg" alt="20231006-25">
-            <div class="image-title">20231006-25</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-17.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-17">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-17</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-26.jpg" alt="20231006-26">
-            <div class="image-title">20231006-26</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-18.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-18">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-18</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-27.jpg" alt="20231006-27">
-            <div class="image-title">20231006-27</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-19.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-19">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-19</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-28.jpg" alt="20231006-28">
-            <div class="image-title">20231006-28</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-2.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-2">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-2</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-29.jpg" alt="20231006-29">
-            <div class="image-title">20231006-29</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-20.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-20">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-20</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-30.jpg" alt="20231006-30">
-            <div class="image-title">20231006-30</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-21.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-21">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-21</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-31.jpg" alt="20231006-31">
-            <div class="image-title">20231006-31</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-22.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-22">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-22</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-32.jpg" alt="20231006-32">
-            <div class="image-title">20231006-32</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-23.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-23">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-23</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-33.jpg" alt="20231006-33">
-            <div class="image-title">20231006-33</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-24.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-24">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-24</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-1.jpg" alt="20231006-1">
-            <div class="image-title">20231006-1</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-25.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-25">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-25</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-10.jpg" alt="20231006-10">
-            <div class="image-title">20231006-10</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-26.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-26">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-26</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-12.jpg" alt="20231006-12">
-            <div class="image-title">20231006-12</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-27.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-27">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-27</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-13.jpg" alt="20231006-13">
-            <div class="image-title">20231006-13</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-28.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-28">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-28</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-14.jpg" alt="20231006-14">
-            <div class="image-title">20231006-14</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-29.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-29">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-29</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-2.jpg" alt="20231006-2">
-            <div class="image-title">20231006-2</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-3.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-3">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-3</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-3.jpg" alt="20231006-3">
-            <div class="image-title">20231006-3</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-30.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-30">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-30</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-4.jpg" alt="20231006-4">
-            <div class="image-title">20231006-4</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-31.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-31">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-31</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-5.jpg" alt="20231006-5">
-            <div class="image-title">20231006-5</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-32.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-32">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-32</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-6.jpg" alt="20231006-6">
-            <div class="image-title">20231006-6</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-33.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-33">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-33</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-7.jpg" alt="20231006-7">
-            <div class="image-title">20231006-7</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-4.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-4">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-4</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-8.jpg" alt="20231006-8">
-            <div class="image-title">20231006-8</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-5.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-5">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-5</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-9.jpg" alt="20231006-9">
-            <div class="image-title">20231006-9</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-6.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-6">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-6</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-1.jpg" alt="20230930-1">
-            <div class="image-title">20230930-1</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-7.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-7">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-7</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-10.jpg" alt="20230930-10">
-            <div class="image-title">20230930-10</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-8.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-8">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-8</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-11.jpg" alt="20230930-11">
-            <div class="image-title">20230930-11</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20200924-xinjiang/Gray__LI-xinjiang-9.jpg" alt="img%2F20200924-xinjiang%2FGray__LI-xinjiang-9">
+            <div class="image-title">img%2F20200924-xinjiang%2FGray__LI-xinjiang-9</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-12.jpg" alt="20230930-12">
-            <div class="image-title">20230930-12</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-1.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-1">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-1</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-13.jpg" alt="20230930-13">
-            <div class="image-title">20230930-13</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-101.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-101">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-101</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-14.jpg" alt="20230930-14">
-            <div class="image-title">20230930-14</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-107.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-107">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-107</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-15.jpg" alt="20230930-15">
-            <div class="image-title">20230930-15</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-11.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-11">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-11</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-16.jpg" alt="20230930-16">
-            <div class="image-title">20230930-16</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-115.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-115">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-115</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-18.jpg" alt="20230930-18">
-            <div class="image-title">20230930-18</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-118.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-118">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-118</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-19.jpg" alt="20230930-19">
-            <div class="image-title">20230930-19</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-119.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-119">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-119</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-2.jpg" alt="20230930-2">
-            <div class="image-title">20230930-2</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-121.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-121">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-121</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-20.jpg" alt="20230930-20">
-            <div class="image-title">20230930-20</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-14.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-14">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-14</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-21.jpg" alt="20230930-21">
-            <div class="image-title">20230930-21</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-15.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-15">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-15</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-22.jpg" alt="20230930-22">
-            <div class="image-title">20230930-22</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-17.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-17">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-17</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-23.jpg" alt="20230930-23">
-            <div class="image-title">20230930-23</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-2.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-2">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-2</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-24.jpg" alt="20230930-24">
-            <div class="image-title">20230930-24</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-24.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-24">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-24</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-26.jpg" alt="20230930-26">
-            <div class="image-title">20230930-26</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-26.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-26">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-26</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-27.jpg" alt="20230930-27">
-            <div class="image-title">20230930-27</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-27.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-27">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-27</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-28.jpg" alt="20230930-28">
-            <div class="image-title">20230930-28</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-29.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-29">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-29</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-29.jpg" alt="20230930-29">
-            <div class="image-title">20230930-29</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-33.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-33">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-33</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-3.jpg" alt="20230930-3">
-            <div class="image-title">20230930-3</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-43.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-43">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-43</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-30.jpg" alt="20230930-30">
-            <div class="image-title">20230930-30</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-46.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-46">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-46</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-31.jpg" alt="20230930-31">
-            <div class="image-title">20230930-31</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-47.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-47">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-47</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-32.jpg" alt="20230930-32">
-            <div class="image-title">20230930-32</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-55.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-55">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-55</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-33.jpg" alt="20230930-33">
-            <div class="image-title">20230930-33</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-64.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-64">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-64</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-34.jpg" alt="20230930-34">
-            <div class="image-title">20230930-34</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-67.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-67">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-67</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-35.jpg" alt="20230930-35">
-            <div class="image-title">20230930-35</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-69.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-69">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-69</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-37.jpg" alt="20230930-37">
-            <div class="image-title">20230930-37</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-7.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-7">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-7</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-4.jpg" alt="20230930-4">
-            <div class="image-title">20230930-4</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-70.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-70">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-70</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-5.jpg" alt="20230930-5">
-            <div class="image-title">20230930-5</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-72.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-72">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-72</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-6.jpg" alt="20230930-6">
-            <div class="image-title">20230930-6</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-73.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-73">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-73</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-8.jpg" alt="20230930-8">
-            <div class="image-title">20230930-8</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-74.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-74">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-74</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-9.jpg" alt="20230930-9">
-            <div class="image-title">20230930-9</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-77.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-77">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-77</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-1.jpg" alt="20230929-1">
-            <div class="image-title">20230929-1</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-82.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-82">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-82</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-10.jpg" alt="20230929-10">
-            <div class="image-title">20230929-10</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-98.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-98">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-98</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-11.jpg" alt="20230929-11">
-            <div class="image-title">20230929-11</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-99.jpg" alt="img%2F20210325-dalianjiepai%2Fphoto-99">
+            <div class="image-title">img%2F20210325-dalianjiepai%2Fphoto-99</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-12.jpg" alt="20230929-12">
-            <div class="image-title">20230929-12</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-1-2.jpg" alt="img%2F20210823-qinghai%2Fphoto-1-2">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-1-2</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-13.jpg" alt="20230929-13">
-            <div class="image-title">20230929-13</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-1.jpg" alt="img%2F20210823-qinghai%2Fphoto-1">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-1</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-15.jpg" alt="20230929-15">
-            <div class="image-title">20230929-15</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-10.jpg" alt="img%2F20210823-qinghai%2Fphoto-10">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-10</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-16.jpg" alt="20230929-16">
-            <div class="image-title">20230929-16</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-12.jpg" alt="img%2F20210823-qinghai%2Fphoto-12">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-12</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-4.jpg" alt="20230929-4">
-            <div class="image-title">20230929-4</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-16.jpg" alt="img%2F20210823-qinghai%2Fphoto-16">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-16</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-5.jpg" alt="20230929-5">
-            <div class="image-title">20230929-5</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-18.jpg" alt="img%2F20210823-qinghai%2Fphoto-18">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-18</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-6.jpg" alt="20230929-6">
-            <div class="image-title">20230929-6</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-19.jpg" alt="img%2F20210823-qinghai%2Fphoto-19">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-19</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-7.jpg" alt="20230929-7">
-            <div class="image-title">20230929-7</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-2.jpg" alt="img%2F20210823-qinghai%2Fphoto-2">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-2</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-8.jpg" alt="20230929-8">
-            <div class="image-title">20230929-8</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-20.jpg" alt="img%2F20210823-qinghai%2Fphoto-20">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-20</div>
             <div class="image-description"></div>
         </div>
       </div>
     
       <div class="masonry-item">
         <div class="image-container">
-            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-9.jpg" alt="20230929-9">
-            <div class="image-title">20230929-9</div>
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-22.jpg" alt="img%2F20210823-qinghai%2Fphoto-22">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-22</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-24.jpg" alt="img%2F20210823-qinghai%2Fphoto-24">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-24</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-25.jpg" alt="img%2F20210823-qinghai%2Fphoto-25">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-25</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-26.jpg" alt="img%2F20210823-qinghai%2Fphoto-26">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-26</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-28.jpg" alt="img%2F20210823-qinghai%2Fphoto-28">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-28</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-33.jpg" alt="img%2F20210823-qinghai%2Fphoto-33">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-33</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-38.jpg" alt="img%2F20210823-qinghai%2Fphoto-38">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-38</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-4.jpg" alt="img%2F20210823-qinghai%2Fphoto-4">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-4</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-41.jpg" alt="img%2F20210823-qinghai%2Fphoto-41">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-41</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-44.jpg" alt="img%2F20210823-qinghai%2Fphoto-44">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-44</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210823-qinghai/photo-5.jpg" alt="img%2F20210823-qinghai%2Fphoto-5">
+            <div class="image-title">img%2F20210823-qinghai%2Fphoto-5</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210826-kekexili/photo-1.jpg" alt="img%2F20210826-kekexili%2Fphoto-1">
+            <div class="image-title">img%2F20210826-kekexili%2Fphoto-1</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210826-kekexili/photo-10.jpg" alt="img%2F20210826-kekexili%2Fphoto-10">
+            <div class="image-title">img%2F20210826-kekexili%2Fphoto-10</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210826-kekexili/photo-11.jpg" alt="img%2F20210826-kekexili%2Fphoto-11">
+            <div class="image-title">img%2F20210826-kekexili%2Fphoto-11</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210826-kekexili/photo-12.jpg" alt="img%2F20210826-kekexili%2Fphoto-12">
+            <div class="image-title">img%2F20210826-kekexili%2Fphoto-12</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210826-kekexili/photo-13.jpg" alt="img%2F20210826-kekexili%2Fphoto-13">
+            <div class="image-title">img%2F20210826-kekexili%2Fphoto-13</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210826-kekexili/photo-14.jpg" alt="img%2F20210826-kekexili%2Fphoto-14">
+            <div class="image-title">img%2F20210826-kekexili%2Fphoto-14</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210826-kekexili/photo-17.jpg" alt="img%2F20210826-kekexili%2Fphoto-17">
+            <div class="image-title">img%2F20210826-kekexili%2Fphoto-17</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210826-kekexili/photo-18.jpg" alt="img%2F20210826-kekexili%2Fphoto-18">
+            <div class="image-title">img%2F20210826-kekexili%2Fphoto-18</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210826-kekexili/photo-19.jpg" alt="img%2F20210826-kekexili%2Fphoto-19">
+            <div class="image-title">img%2F20210826-kekexili%2Fphoto-19</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210826-kekexili/photo-2.jpg" alt="img%2F20210826-kekexili%2Fphoto-2">
+            <div class="image-title">img%2F20210826-kekexili%2Fphoto-2</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210826-kekexili/photo-20.jpg" alt="img%2F20210826-kekexili%2Fphoto-20">
+            <div class="image-title">img%2F20210826-kekexili%2Fphoto-20</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210826-kekexili/photo-21.jpg" alt="img%2F20210826-kekexili%2Fphoto-21">
+            <div class="image-title">img%2F20210826-kekexili%2Fphoto-21</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210826-kekexili/photo-3.jpg" alt="img%2F20210826-kekexili%2Fphoto-3">
+            <div class="image-title">img%2F20210826-kekexili%2Fphoto-3</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210826-kekexili/photo-4.jpg" alt="img%2F20210826-kekexili%2Fphoto-4">
+            <div class="image-title">img%2F20210826-kekexili%2Fphoto-4</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210826-kekexili/photo-5.jpg" alt="img%2F20210826-kekexili%2Fphoto-5">
+            <div class="image-title">img%2F20210826-kekexili%2Fphoto-5</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210826-kekexili/photo-6.jpg" alt="img%2F20210826-kekexili%2Fphoto-6">
+            <div class="image-title">img%2F20210826-kekexili%2Fphoto-6</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210826-kekexili/photo-8.jpg" alt="img%2F20210826-kekexili%2Fphoto-8">
+            <div class="image-title">img%2F20210826-kekexili%2Fphoto-8</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210826-kekexili/photo-9.jpg" alt="img%2F20210826-kekexili%2Fphoto-9">
+            <div class="image-title">img%2F20210826-kekexili%2Fphoto-9</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221114-DSCF1041.jpg" alt="img%2F20221114-beijing%2F20221114-DSCF1041">
+            <div class="image-title">img%2F20221114-beijing%2F20221114-DSCF1041</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221218-DSCF1097.jpg" alt="img%2F20221114-beijing%2F20221218-DSCF1097">
+            <div class="image-title">img%2F20221114-beijing%2F20221218-DSCF1097</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221218-DSCF1221.jpg" alt="img%2F20221114-beijing%2F20221218-DSCF1221">
+            <div class="image-title">img%2F20221114-beijing%2F20221218-DSCF1221</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221224-DSCF1299.jpg" alt="img%2F20221114-beijing%2F20221224-DSCF1299">
+            <div class="image-title">img%2F20221114-beijing%2F20221224-DSCF1299</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221224-DSCF1303.jpg" alt="img%2F20221114-beijing%2F20221224-DSCF1303">
+            <div class="image-title">img%2F20221114-beijing%2F20221224-DSCF1303</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221224-DSCF1385.jpg" alt="img%2F20221114-beijing%2F20221224-DSCF1385">
+            <div class="image-title">img%2F20221114-beijing%2F20221224-DSCF1385</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221224-DSCF1405.jpg" alt="img%2F20221114-beijing%2F20221224-DSCF1405">
+            <div class="image-title">img%2F20221114-beijing%2F20221224-DSCF1405</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221224-DSCF1454.jpg" alt="img%2F20221114-beijing%2F20221224-DSCF1454">
+            <div class="image-title">img%2F20221114-beijing%2F20221224-DSCF1454</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221224-DSCF1484.jpg" alt="img%2F20221114-beijing%2F20221224-DSCF1484">
+            <div class="image-title">img%2F20221114-beijing%2F20221224-DSCF1484</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221224-DSCF1496.jpg" alt="img%2F20221114-beijing%2F20221224-DSCF1496">
+            <div class="image-title">img%2F20221114-beijing%2F20221224-DSCF1496</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221224-DSCF1510.jpg" alt="img%2F20221114-beijing%2F20221224-DSCF1510">
+            <div class="image-title">img%2F20221114-beijing%2F20221224-DSCF1510</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221224-DSCF1622.jpg" alt="img%2F20221114-beijing%2F20221224-DSCF1622">
+            <div class="image-title">img%2F20221114-beijing%2F20221224-DSCF1622</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221225-DSCF1634.jpg" alt="img%2F20221114-beijing%2F20221225-DSCF1634">
+            <div class="image-title">img%2F20221114-beijing%2F20221225-DSCF1634</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221225-DSCF1716.jpg" alt="img%2F20221114-beijing%2F20221225-DSCF1716">
+            <div class="image-title">img%2F20221114-beijing%2F20221225-DSCF1716</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221225-DSCF1738.jpg" alt="img%2F20221114-beijing%2F20221225-DSCF1738">
+            <div class="image-title">img%2F20221114-beijing%2F20221225-DSCF1738</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221225-DSCF1740.jpg" alt="img%2F20221114-beijing%2F20221225-DSCF1740">
+            <div class="image-title">img%2F20221114-beijing%2F20221225-DSCF1740</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221225-DSCF1747.jpg" alt="img%2F20221114-beijing%2F20221225-DSCF1747">
+            <div class="image-title">img%2F20221114-beijing%2F20221225-DSCF1747</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221225-DSCF1772.jpg" alt="img%2F20221114-beijing%2F20221225-DSCF1772">
+            <div class="image-title">img%2F20221114-beijing%2F20221225-DSCF1772</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221231-DSCF1851.jpg" alt="img%2F20221114-beijing%2F20221231-DSCF1851">
+            <div class="image-title">img%2F20221114-beijing%2F20221231-DSCF1851</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221231-DSCF1968.jpg" alt="img%2F20221114-beijing%2F20221231-DSCF1968">
+            <div class="image-title">img%2F20221114-beijing%2F20221231-DSCF1968</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221231-DSCF2005.jpg" alt="img%2F20221114-beijing%2F20221231-DSCF2005">
+            <div class="image-title">img%2F20221114-beijing%2F20221231-DSCF2005</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221231-DSCF2021.jpg" alt="img%2F20221114-beijing%2F20221231-DSCF2021">
+            <div class="image-title">img%2F20221114-beijing%2F20221231-DSCF2021</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221231-DSCF2023.jpg" alt="img%2F20221114-beijing%2F20221231-DSCF2023">
+            <div class="image-title">img%2F20221114-beijing%2F20221231-DSCF2023</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221231-DSCF2147.jpg" alt="img%2F20221114-beijing%2F20221231-DSCF2147">
+            <div class="image-title">img%2F20221114-beijing%2F20221231-DSCF2147</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221231-DSCF2148.jpg" alt="img%2F20221114-beijing%2F20221231-DSCF2148">
+            <div class="image-title">img%2F20221114-beijing%2F20221231-DSCF2148</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221231-DSCF2193.jpg" alt="img%2F20221114-beijing%2F20221231-DSCF2193">
+            <div class="image-title">img%2F20221114-beijing%2F20221231-DSCF2193</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221231-DSCF2214.jpg" alt="img%2F20221114-beijing%2F20221231-DSCF2214">
+            <div class="image-title">img%2F20221114-beijing%2F20221231-DSCF2214</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221231-DSCF2219.jpg" alt="img%2F20221114-beijing%2F20221231-DSCF2219">
+            <div class="image-title">img%2F20221114-beijing%2F20221231-DSCF2219</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20221114-beijing/20221231-DSCF2222.jpg" alt="img%2F20221114-beijing%2F20221231-DSCF2222">
+            <div class="image-title">img%2F20221114-beijing%2F20221231-DSCF2222</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-1.jpg" alt="img%2F20230929-jinshitan%2F20230929-1">
+            <div class="image-title">img%2F20230929-jinshitan%2F20230929-1</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-10.jpg" alt="img%2F20230929-jinshitan%2F20230929-10">
+            <div class="image-title">img%2F20230929-jinshitan%2F20230929-10</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-11.jpg" alt="img%2F20230929-jinshitan%2F20230929-11">
+            <div class="image-title">img%2F20230929-jinshitan%2F20230929-11</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-12.jpg" alt="img%2F20230929-jinshitan%2F20230929-12">
+            <div class="image-title">img%2F20230929-jinshitan%2F20230929-12</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-13.jpg" alt="img%2F20230929-jinshitan%2F20230929-13">
+            <div class="image-title">img%2F20230929-jinshitan%2F20230929-13</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-15.jpg" alt="img%2F20230929-jinshitan%2F20230929-15">
+            <div class="image-title">img%2F20230929-jinshitan%2F20230929-15</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-16.jpg" alt="img%2F20230929-jinshitan%2F20230929-16">
+            <div class="image-title">img%2F20230929-jinshitan%2F20230929-16</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-4.jpg" alt="img%2F20230929-jinshitan%2F20230929-4">
+            <div class="image-title">img%2F20230929-jinshitan%2F20230929-4</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-5.jpg" alt="img%2F20230929-jinshitan%2F20230929-5">
+            <div class="image-title">img%2F20230929-jinshitan%2F20230929-5</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-6.jpg" alt="img%2F20230929-jinshitan%2F20230929-6">
+            <div class="image-title">img%2F20230929-jinshitan%2F20230929-6</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-7.jpg" alt="img%2F20230929-jinshitan%2F20230929-7">
+            <div class="image-title">img%2F20230929-jinshitan%2F20230929-7</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-8.jpg" alt="img%2F20230929-jinshitan%2F20230929-8">
+            <div class="image-title">img%2F20230929-jinshitan%2F20230929-8</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-9.jpg" alt="img%2F20230929-jinshitan%2F20230929-9">
+            <div class="image-title">img%2F20230929-jinshitan%2F20230929-9</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-1.jpg" alt="img%2F20230930-jiepai%2F20230930-1">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-1</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-10.jpg" alt="img%2F20230930-jiepai%2F20230930-10">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-10</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-11.jpg" alt="img%2F20230930-jiepai%2F20230930-11">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-11</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-12.jpg" alt="img%2F20230930-jiepai%2F20230930-12">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-12</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-13.jpg" alt="img%2F20230930-jiepai%2F20230930-13">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-13</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-14.jpg" alt="img%2F20230930-jiepai%2F20230930-14">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-14</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-15.jpg" alt="img%2F20230930-jiepai%2F20230930-15">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-15</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-16.jpg" alt="img%2F20230930-jiepai%2F20230930-16">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-16</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-18.jpg" alt="img%2F20230930-jiepai%2F20230930-18">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-18</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-19.jpg" alt="img%2F20230930-jiepai%2F20230930-19">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-19</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-2.jpg" alt="img%2F20230930-jiepai%2F20230930-2">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-2</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-20.jpg" alt="img%2F20230930-jiepai%2F20230930-20">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-20</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-21.jpg" alt="img%2F20230930-jiepai%2F20230930-21">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-21</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-22.jpg" alt="img%2F20230930-jiepai%2F20230930-22">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-22</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-23.jpg" alt="img%2F20230930-jiepai%2F20230930-23">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-23</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-24.jpg" alt="img%2F20230930-jiepai%2F20230930-24">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-24</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-26.jpg" alt="img%2F20230930-jiepai%2F20230930-26">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-26</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-27.jpg" alt="img%2F20230930-jiepai%2F20230930-27">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-27</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-28.jpg" alt="img%2F20230930-jiepai%2F20230930-28">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-28</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-29.jpg" alt="img%2F20230930-jiepai%2F20230930-29">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-29</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-3.jpg" alt="img%2F20230930-jiepai%2F20230930-3">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-3</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-30.jpg" alt="img%2F20230930-jiepai%2F20230930-30">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-30</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-31.jpg" alt="img%2F20230930-jiepai%2F20230930-31">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-31</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-32.jpg" alt="img%2F20230930-jiepai%2F20230930-32">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-32</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-33.jpg" alt="img%2F20230930-jiepai%2F20230930-33">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-33</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-34.jpg" alt="img%2F20230930-jiepai%2F20230930-34">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-34</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-35.jpg" alt="img%2F20230930-jiepai%2F20230930-35">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-35</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-37.jpg" alt="img%2F20230930-jiepai%2F20230930-37">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-37</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-4.jpg" alt="img%2F20230930-jiepai%2F20230930-4">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-4</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-5.jpg" alt="img%2F20230930-jiepai%2F20230930-5">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-5</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-6.jpg" alt="img%2F20230930-jiepai%2F20230930-6">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-6</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-8.jpg" alt="img%2F20230930-jiepai%2F20230930-8">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-8</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230930-jiepai/20230930-9.jpg" alt="img%2F20230930-jiepai%2F20230930-9">
+            <div class="image-title">img%2F20230930-jiepai%2F20230930-9</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231004-binhaigongyuan/20231004-1.jpg" alt="img%2F20231004-binhaigongyuan%2F20231004-1">
+            <div class="image-title">img%2F20231004-binhaigongyuan%2F20231004-1</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231004-binhaigongyuan/20231004-10.jpg" alt="img%2F20231004-binhaigongyuan%2F20231004-10">
+            <div class="image-title">img%2F20231004-binhaigongyuan%2F20231004-10</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231004-binhaigongyuan/20231004-11.jpg" alt="img%2F20231004-binhaigongyuan%2F20231004-11">
+            <div class="image-title">img%2F20231004-binhaigongyuan%2F20231004-11</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231004-binhaigongyuan/20231004-12.jpg" alt="img%2F20231004-binhaigongyuan%2F20231004-12">
+            <div class="image-title">img%2F20231004-binhaigongyuan%2F20231004-12</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231004-binhaigongyuan/20231004-13.jpg" alt="img%2F20231004-binhaigongyuan%2F20231004-13">
+            <div class="image-title">img%2F20231004-binhaigongyuan%2F20231004-13</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231004-binhaigongyuan/20231004-2.jpg" alt="img%2F20231004-binhaigongyuan%2F20231004-2">
+            <div class="image-title">img%2F20231004-binhaigongyuan%2F20231004-2</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231004-binhaigongyuan/20231004-3.jpg" alt="img%2F20231004-binhaigongyuan%2F20231004-3">
+            <div class="image-title">img%2F20231004-binhaigongyuan%2F20231004-3</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231004-binhaigongyuan/20231004-5.jpg" alt="img%2F20231004-binhaigongyuan%2F20231004-5">
+            <div class="image-title">img%2F20231004-binhaigongyuan%2F20231004-5</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231004-binhaigongyuan/20231004-6.jpg" alt="img%2F20231004-binhaigongyuan%2F20231004-6">
+            <div class="image-title">img%2F20231004-binhaigongyuan%2F20231004-6</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231004-binhaigongyuan/20231004-8.jpg" alt="img%2F20231004-binhaigongyuan%2F20231004-8">
+            <div class="image-title">img%2F20231004-binhaigongyuan%2F20231004-8</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231004-binhaigongyuan/20231004-9.jpg" alt="img%2F20231004-binhaigongyuan%2F20231004-9">
+            <div class="image-title">img%2F20231004-binhaigongyuan%2F20231004-9</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-15.jpg" alt="img%2F20231006-baiyunshan%2F20231006-15">
+            <div class="image-title">img%2F20231006-baiyunshan%2F20231006-15</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-16.jpg" alt="img%2F20231006-baiyunshan%2F20231006-16">
+            <div class="image-title">img%2F20231006-baiyunshan%2F20231006-16</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-17.jpg" alt="img%2F20231006-baiyunshan%2F20231006-17">
+            <div class="image-title">img%2F20231006-baiyunshan%2F20231006-17</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-18.jpg" alt="img%2F20231006-baiyunshan%2F20231006-18">
+            <div class="image-title">img%2F20231006-baiyunshan%2F20231006-18</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-20.jpg" alt="img%2F20231006-baiyunshan%2F20231006-20">
+            <div class="image-title">img%2F20231006-baiyunshan%2F20231006-20</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-21.jpg" alt="img%2F20231006-baiyunshan%2F20231006-21">
+            <div class="image-title">img%2F20231006-baiyunshan%2F20231006-21</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-22.jpg" alt="img%2F20231006-baiyunshan%2F20231006-22">
+            <div class="image-title">img%2F20231006-baiyunshan%2F20231006-22</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-23.jpg" alt="img%2F20231006-baiyunshan%2F20231006-23">
+            <div class="image-title">img%2F20231006-baiyunshan%2F20231006-23</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-25.jpg" alt="img%2F20231006-baiyunshan%2F20231006-25">
+            <div class="image-title">img%2F20231006-baiyunshan%2F20231006-25</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-26.jpg" alt="img%2F20231006-baiyunshan%2F20231006-26">
+            <div class="image-title">img%2F20231006-baiyunshan%2F20231006-26</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-27.jpg" alt="img%2F20231006-baiyunshan%2F20231006-27">
+            <div class="image-title">img%2F20231006-baiyunshan%2F20231006-27</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-28.jpg" alt="img%2F20231006-baiyunshan%2F20231006-28">
+            <div class="image-title">img%2F20231006-baiyunshan%2F20231006-28</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-29.jpg" alt="img%2F20231006-baiyunshan%2F20231006-29">
+            <div class="image-title">img%2F20231006-baiyunshan%2F20231006-29</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-30.jpg" alt="img%2F20231006-baiyunshan%2F20231006-30">
+            <div class="image-title">img%2F20231006-baiyunshan%2F20231006-30</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-31.jpg" alt="img%2F20231006-baiyunshan%2F20231006-31">
+            <div class="image-title">img%2F20231006-baiyunshan%2F20231006-31</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-32.jpg" alt="img%2F20231006-baiyunshan%2F20231006-32">
+            <div class="image-title">img%2F20231006-baiyunshan%2F20231006-32</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-baiyunshan/20231006-33.jpg" alt="img%2F20231006-baiyunshan%2F20231006-33">
+            <div class="image-title">img%2F20231006-baiyunshan%2F20231006-33</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-1.jpg" alt="img%2F20231006-suoyuwan%2F20231006-1">
+            <div class="image-title">img%2F20231006-suoyuwan%2F20231006-1</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-10.jpg" alt="img%2F20231006-suoyuwan%2F20231006-10">
+            <div class="image-title">img%2F20231006-suoyuwan%2F20231006-10</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-12.jpg" alt="img%2F20231006-suoyuwan%2F20231006-12">
+            <div class="image-title">img%2F20231006-suoyuwan%2F20231006-12</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-13.jpg" alt="img%2F20231006-suoyuwan%2F20231006-13">
+            <div class="image-title">img%2F20231006-suoyuwan%2F20231006-13</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-14.jpg" alt="img%2F20231006-suoyuwan%2F20231006-14">
+            <div class="image-title">img%2F20231006-suoyuwan%2F20231006-14</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-2.jpg" alt="img%2F20231006-suoyuwan%2F20231006-2">
+            <div class="image-title">img%2F20231006-suoyuwan%2F20231006-2</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-3.jpg" alt="img%2F20231006-suoyuwan%2F20231006-3">
+            <div class="image-title">img%2F20231006-suoyuwan%2F20231006-3</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-4.jpg" alt="img%2F20231006-suoyuwan%2F20231006-4">
+            <div class="image-title">img%2F20231006-suoyuwan%2F20231006-4</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-5.jpg" alt="img%2F20231006-suoyuwan%2F20231006-5">
+            <div class="image-title">img%2F20231006-suoyuwan%2F20231006-5</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-6.jpg" alt="img%2F20231006-suoyuwan%2F20231006-6">
+            <div class="image-title">img%2F20231006-suoyuwan%2F20231006-6</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-7.jpg" alt="img%2F20231006-suoyuwan%2F20231006-7">
+            <div class="image-title">img%2F20231006-suoyuwan%2F20231006-7</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-8.jpg" alt="img%2F20231006-suoyuwan%2F20231006-8">
+            <div class="image-title">img%2F20231006-suoyuwan%2F20231006-8</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231006-suoyuwan/20231006-9.jpg" alt="img%2F20231006-suoyuwan%2F20231006-9">
+            <div class="image-title">img%2F20231006-suoyuwan%2F20231006-9</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231216-beijingjianzhu/20231216-DSCF7570.jpg" alt="img%2F20231216-beijingjianzhu%2F20231216-DSCF7570">
+            <div class="image-title">img%2F20231216-beijingjianzhu%2F20231216-DSCF7570</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231216-beijingjianzhu/20231216-DSCF7574.jpg" alt="img%2F20231216-beijingjianzhu%2F20231216-DSCF7574">
+            <div class="image-title">img%2F20231216-beijingjianzhu%2F20231216-DSCF7574</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231216-beijingjianzhu/20231216-DSCF7581.jpg" alt="img%2F20231216-beijingjianzhu%2F20231216-DSCF7581">
+            <div class="image-title">img%2F20231216-beijingjianzhu%2F20231216-DSCF7581</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231216-beijingjianzhu/20231216-DSCF7902.jpg" alt="img%2F20231216-beijingjianzhu%2F20231216-DSCF7902">
+            <div class="image-title">img%2F20231216-beijingjianzhu%2F20231216-DSCF7902</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231216-beijingjianzhu/20231216-DSCF7904.jpg" alt="img%2F20231216-beijingjianzhu%2F20231216-DSCF7904">
+            <div class="image-title">img%2F20231216-beijingjianzhu%2F20231216-DSCF7904</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231216-beijingjianzhu/20231216-DSCF7951-2.jpg" alt="img%2F20231216-beijingjianzhu%2F20231216-DSCF7951-2">
+            <div class="image-title">img%2F20231216-beijingjianzhu%2F20231216-DSCF7951-2</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231216-beijingjianzhu/20231216-DSCF7951.jpg" alt="img%2F20231216-beijingjianzhu%2F20231216-DSCF7951">
+            <div class="image-title">img%2F20231216-beijingjianzhu%2F20231216-DSCF7951</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231216-beijingjianzhu/20231216-DSCF7972.jpg" alt="img%2F20231216-beijingjianzhu%2F20231216-DSCF7972">
+            <div class="image-title">img%2F20231216-beijingjianzhu%2F20231216-DSCF7972</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231216-beijingjianzhu/20231216-DSCF7993-Pano.jpg" alt="img%2F20231216-beijingjianzhu%2F20231216-DSCF7993-Pano">
+            <div class="image-title">img%2F20231216-beijingjianzhu%2F20231216-DSCF7993-Pano</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231216-beijingjianzhu/20231216-DSCF7999.jpg" alt="img%2F20231216-beijingjianzhu%2F20231216-DSCF7999">
+            <div class="image-title">img%2F20231216-beijingjianzhu%2F20231216-DSCF7999</div>
+            <div class="image-description"></div>
+        </div>
+      </div>
+    
+      <div class="masonry-item">
+        <div class="image-container">
+            <img src="https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231216-beijingjianzhu/20231216-DSCF8004-Pano.jpg" alt="img%2F20231216-beijingjianzhu%2F20231216-DSCF8004-Pano">
+            <div class="image-title">img%2F20231216-beijingjianzhu%2F20231216-DSCF8004-Pano</div>
             <div class="image-description"></div>
         </div>
       </div>
@@ -887,12 +2304,12 @@
         <div class="text-center">
             &copy;
             
-            2023&nbsp;&nbsp;<i class="fa-regular fa-computer-classic"></i>&nbsp;&nbsp;<a href="/">Gregory</a>
+            2024&nbsp;&nbsp;<i class="fa-regular fa-computer-classic"></i>&nbsp;&nbsp;<a href="/">Gregory</a>
         </div>
         
         <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
             <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
-            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.5.0</a></span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.0</a></span>
         </div>
         
         
@@ -1047,11 +2464,9 @@
 
 
 
+
 <div class="post-scripts" data-swup-reload-script>
     
-        
-<script src="/js/libs/anime.min.js"></script>
-
         
 <script src="/js/tools/tocToggle.js" type="module"></script>
 
