@@ -1,6 +1,7 @@
 ---
 title: cmake使用openNURBS
 category: 技术博客
+date: 2024-03-08
 ---
 
 想要在cmake中使用openNURBS库。OpenNURBS教程中没有给明确的安装方法，甚至在源代码中还包含sln文件。所有找方法导入到自己的项目中。
