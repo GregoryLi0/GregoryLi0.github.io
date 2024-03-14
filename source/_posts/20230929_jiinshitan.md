@@ -2,6 +2,7 @@
 title: 2023-09-29 大连-金石滩
 cover_image: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-9.jpg
 thumbnail: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20230929-jinshitan/20230929-11.jpg
+category: 相册
 excerpt: 2023-09-24 拍摄于大连金石滩
 date: 2023-09-24
 ---

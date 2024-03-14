@@ -3,6 +3,7 @@ title: 2023-12-16 北京建筑
 type: masonry
 cover_image: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231216-beijingjianzhu/20231216-DSCF7951.jpg
 thumbnail: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20231216-beijingjianzhu/20231216-DSCF7951.jpg
+category: 相册
 excerpt: 北京 建筑
 date: 2023-12-16
 ---

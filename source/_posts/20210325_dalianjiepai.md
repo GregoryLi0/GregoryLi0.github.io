@@ -3,6 +3,7 @@ title: 2021-03-25 大连街拍
 type: masonry
 cover_image: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-27.jpg
 thumbnail: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20210325-dalianjiepai/photo-27.jpg
+category: 相册
 excerpt: 南山街-火车站-宜家
 date: 2021-03-25
 ---

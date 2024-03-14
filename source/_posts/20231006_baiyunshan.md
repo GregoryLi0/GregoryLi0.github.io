@@ -2,6 +2,7 @@
 title: 2023-10-06 大连-白云山
 cover_image: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/baiyunshan.jpg
 thumbnail: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/baiyunshan.jpg
+category: 相册
 excerpt: 林深时见鹿，溪午不闻钟。
 date: 2023-10-06
 ---
