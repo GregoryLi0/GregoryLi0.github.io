@@ -1,6 +1,7 @@
 ---
 title: 傅里叶级数与变换
 category: 技术博客
+mathjax: true
 ---
 
 
