@@ -30,7 +30,7 @@ $$
 
 其中，$a_0$ 为直流分量，$a_n$ 和 $b_n$ 为交流分量，$\omega$ 为角频率。
 
-![alt text](/source/_data/pictures/20240321_fourierSerieAndTrans/image.png)
+![Time and frequency domains](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20240321_fourierSerieAndTrans/image.png)
 
 ## 时域与频域
 

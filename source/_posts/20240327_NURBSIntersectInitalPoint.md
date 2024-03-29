@@ -168,4 +168,4 @@ $$
 
 公众号：贾宇的研究手稿 - *Initial Point on Closed Intersection Curve*
 
-![Initial Point on Closed Intersection Curve](/source/_data/pictures/20240327_NURBSIntersectInitalPoint/20240327092015.png)
+![Initial Point on Closed Intersection Curve](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20240327_NURBSIntersectInitalPoint/jiayutheory.png)
