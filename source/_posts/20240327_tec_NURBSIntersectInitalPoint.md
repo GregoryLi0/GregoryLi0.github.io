@@ -2,6 +2,7 @@
 title: NRUBS Intersect 寻找闭合交线上的初始交点
 category: 技术博客
 mathjax: true
+password: 12317003
 ---
 
 贾宇的公众号 *贾宇的研究手稿* 中发布了 *Initial Point on Closed Intersection Curve* 推文，其中涉及若干公式计算。本文的目标是理解其内容，并与程老师 SIGGRAPH 论文孤立点/小环部分进行对比。
