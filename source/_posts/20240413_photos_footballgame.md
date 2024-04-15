@@ -4,9 +4,11 @@ type: masonry
 cover_image: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20240413_daliansuoyuwanfootballgame/20240413-21.jpg
 thumbnail: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20240413_daliansuoyuwanfootballgame/20240413-21.jpg
 category: 相册
-excerpt: 
 date: 2024-04-13
 ---
+
+
+2023-10-06 拍摄于大连梭鱼湾 大连英博VS辽宁铁人足球比赛
 
 ![20240413-1](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20240413_daliansuoyuwanfootballgame/20240413-1.jpg "20240413-1")
 ![20240413-10](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20240413_daliansuoyuwanfootballgame/20240413-10.jpg "20240413-10")
