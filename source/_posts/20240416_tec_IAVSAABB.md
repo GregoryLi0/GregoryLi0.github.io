@@ -98,3 +98,66 @@ $P_2$:  $ab < b^2 < a+b-ab$
 2. 不等参：例如对于 $ [\frac{1}{5}, \frac{2}{5}] \in [0, 1]$，区间计算的结果与 $ [2, 3] \in [1, 6]$ 的结果不同。而对于控制点 AABB，其结果相同。这在处理 B 样条曲线时，可能会导致问题。
 
 3. 区间范围可能更大。
+
+区间计算测试代码：
+    
+```python
+class IntervalNumber:
+  def __init__(self,a,b):
+    self.a = a
+    self.b = b
+  
+  def __str__(self):
+    return '[{0},{1}]'.format(self.a,self.b)
+
+  def __add__(self,other):
+    return _add(self,other)
+
+  def __sub__(self,other):
+    return _sub(self,other)
+
+  def __mul__(self,other):
+    return _mul(self,other)
+
+  def __truediv__(self,other):
+    return _truediv(self,other)
+
+def _add(I,J):
+  result = IntervalNumber(I.a+J.a,I.b+J.b)
+  return result
+
+def _sub(I,J):
+  result = IntervalNumber(I.a - J.b, I.b-J.a)
+  return result
+
+def _mul(I,J):
+  result = IntervalNumber(I.a*J.a,I.b*J.b)
+  return result
+
+def _truediv(I,J):
+  result = IntervalNumber(I.a/J.b, I.b/J.a)
+  return result
+
+t = IntervalNumber(0, 1)
+t_0 = IntervalNumber((t.a+t.b)/2, (t.a+t.b)/2)
+t_1 = IntervalNumber((t.b-t.a)/2, (t.b-t.a)/2)
+ep = IntervalNumber(-1, 1)
+
+x = 1
+y = 2
+z = 3
+
+P_0 = IntervalNumber(x, x)
+P_1 = IntervalNumber(y, y)
+P_2 = IntervalNumber(z, z)
+N_1 = IntervalNumber(1, 1)
+N_2 = IntervalNumber(2, 2)
+B = (N_1-t)*(N_1-t)*P_0+N_2*(N_1-t)*t*P_1+t*t*P_2
+print('B(t) =', B)
+
+B = (N_1-(t_0+ep*t_1))*(N_1-(t_0+ep*t_1)) * \
+    P_0+N_2*(N_1-(t_0+ep*t_1))*(t_0+ep*t_1)*P_1+(t_0+ep*t_1)*(t_0+ep*t_1)*P_2
+
+
+print('B(t) =', B)
+```
