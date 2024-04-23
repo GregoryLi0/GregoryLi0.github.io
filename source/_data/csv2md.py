@@ -2,7 +2,7 @@ import pandas as pd
 
 # 读取CSV文件
 # 请替换成你的CSV文件路径
-csv_file = 'D:\Codes\othercode\photourls/20240413-daliansuoyuwanfootballgame.csv'
+csv_file = 'C:/Users/97474/Downloads/export_urls (7).csv'
 df = pd.read_csv(csv_file)
 
 # 创建一个空列表，用于存储转换后的数据
