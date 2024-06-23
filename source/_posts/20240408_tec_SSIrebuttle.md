@@ -24,7 +24,13 @@ password: 12317003
 
 3. C-S 如何计算？4D 边界与 edge 混用表述不清楚。
 
-4. 如何使用 Lipschitz 约束？
+4. 如何算 Lipschitz 系数？
+
+使用方法：
+
+    - 细分法， OBB 对角线距离小于 Lipschitz 约束 $\epsilon$，则停止细分。
+
+    - 追踪法，步长小于 $\epsilon$
 
 5. 一些表述单词错误。**rebuttle 原文给出了详细清单**
 
