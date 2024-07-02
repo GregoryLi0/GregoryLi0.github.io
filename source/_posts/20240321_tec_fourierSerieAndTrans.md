@@ -2,6 +2,7 @@
 title: 傅里叶级数与变换
 category: 技术博客
 mathjax: true
+date: 2024-03-21
 ---
 
 

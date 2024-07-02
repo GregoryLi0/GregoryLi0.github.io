@@ -2,6 +2,7 @@
 title: Injectivity conditions of rational Bézier surfaces 阅读
 category: 论文阅读
 mathjax: true
+date: 2024-04-11
 ---
 
 >发表期刊：Computers & Graphics \

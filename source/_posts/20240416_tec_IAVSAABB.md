@@ -3,6 +3,7 @@ title: NURBS 区间计算（IA & AA） 与控制点AABB的区间范围差别。
 category: 技术博客
 mathjax: true
 password: 12317003
+date: 2024-04-16
 ---
 
 # 问题

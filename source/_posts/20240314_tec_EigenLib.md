@@ -1,6 +1,7 @@
 ---
 title: Eigen库使用说明
 category: 技术博客
+date: 2024-03-14
 ---
 
 # Eigen库简介

@@ -2,6 +2,7 @@
 title: Affine Arithmetic-Based B-Spline Surface Intersection with GPU Acceleration 阅读
 category: 论文阅读
 mathjax: true
+date: 2024-03-27
 ---
 
 >发表期刊：TVCG 2014 \

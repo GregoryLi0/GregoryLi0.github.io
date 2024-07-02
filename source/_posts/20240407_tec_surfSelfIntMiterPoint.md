@@ -3,6 +3,7 @@ title: 自交曲面与 miter point
 category: 技术博客
 mathjax: true
 password: 12317003
+date: 2024-04-07
 ---
 
 >**参考资料：**

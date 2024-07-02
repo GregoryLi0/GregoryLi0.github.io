@@ -3,6 +3,7 @@ title: NURBS 曲面求交思路
 category: 技术博客
 mathjax: true
 password: 12317003
+date: 2024-04-22
 ---
 
 # 问题

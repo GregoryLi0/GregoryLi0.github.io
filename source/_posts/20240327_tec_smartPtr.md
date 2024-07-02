@@ -2,6 +2,7 @@
 title: 左值右值与智能指针
 category: 技术博客
 mathjax: true
+date: 2024-03-27
 ---
 
 >**参考资料：**

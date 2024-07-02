@@ -3,6 +3,7 @@ title: 样条光顺性
 category: 技术博客
 mathjax: true
 password: 12317003
+date: 2024-03-25
 ---
 
 想用信号处理中的傅里叶变换来解释并处理样条光顺性。
