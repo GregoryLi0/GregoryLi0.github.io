@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Gregory">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2024/07/02/20240411_workflowofphotos/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="整理、保存照片流程">
+<meta property="og:url" content="http://example.com/2024/07/02/20240411_workflowofphotos/index.html">
+<meta property="og:site_name" content="Gregory&#39;s Gallery">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-07-02T04:54:22.599Z">
+<meta property="article:modified_time" content="2024-07-02T04:54:22.599Z">
+<meta property="article:author" content="Gregory">
+<meta name="twitter:card" content="summary">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            整理、保存照片流程 -
+        
+        Gregory&#39;s Gallery
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        Gregory&#39;s Gallery
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+    <!--- Inject Part-->
+    
+    <script id="hexo-configurations">
+    window.config = {"hostname":"example.com","root":"/","language":"zh-CN"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left"},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"all_rights_reserved"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js","enable":false,"site_pv":false,"site_uv":false,"post_pv":false},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/wallhaven-wqery6-light.webp","dark":"https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/wallhaven-wqery6-dark.webp"},"title":"Gregory's Gallery","subtitle":{"text":["Scroll down to view my photos...","Welcome :)"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"links":{"github":"https://github.com/GregoryLi0","email":"gregoryli@foxmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.0","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"相册":{"icon":"fa-solid fa-image","path":"/masonry/"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"info","announcement":"Simplicity is the end result of long, hard work, not the starting point.","links":null},"article_date_format":"YYYY-MM-DD","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}}};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":true};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container">
+
+    <div class="navbar-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Gregory&#39;s Gallery
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/masonry/"
+                                        >
+                                    <i class="fa-solid fa-image fa-fw"></i>
+                                    相册
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/masonry/"
+                        >
+                            <span>
+                                相册
+                            </span>
+                            
+                                <i class="fa-solid fa-image fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">44</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">46</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">整理、保存照片流程</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/redefine-avatar.svg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Gregory</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-07-02 12:54:22</span>
+        <span class="mobile">2024-07-02 12:54:22</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-07-02 12:54:22</span>
+            <span class="mobile">2024-07-02 12:54:22</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E8%AE%B0%E5%BD%95/">记录</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            
+<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="41fa7c1ca8bc99af9e96833d6e10c2fd3d8cfa20dcb738699e4b982549b35ec1">7d868de76c01ed3511cb82b511bc50ff98955752dad3c11c0da79bb33fdb5be12abe52f85652adbe293f9c7549cfe1fa61604c16752cf040ee50a74423ca1fba9bbba1b9d05e092f2bbb7ba4074f0ff7b38911602fe18e753cd44e15dd2c44246361011c7a3b537a2c0b5e1bbf9756c79538688e446160b5e6adb5e54d99f547222007feb5ce42cf1d1f6157d8e36219d073b27d5d0fe1561c5f4e3a6eb635b5a51d59af4b6fc1f8e0f2575faed97997ce130e071c78f78999d5bfec9662d9d7348d44093868cc291c37497f0dc9df37c020f5c8c2f5e9581042e50da4267930533b71424a8e6e2fa4d005f0c252dd60eaebba98794eb872dd8fab3e75ef801e21c5f8c1733a517b2857289835dbc8b5d066fbe7c5b88396563deac58eae7be875b2d9589ebe507a6e8795b48fb7bb8fe4e418758e069baea665e259b098a8fe938965a93de1321703f955ed2fbe2c65344ccc9cdbb131bc486975d45f9accb53fd7b10dd84ca87e5042cf7f4b6f7ca40f66bef76dc07e41be9ddaed60b003db71083e1fb9fd8d16ab473aedb407254c3024b03cc0dcbbfae0c9bf05c5ff7526303196a646579620190909e017ff4e01a7921ef82f8e9ee37e5365ffea2f5591ebecdfac557ae3f867343a66bd2c0384917f36debc1d95aaf6c8b65f9a8541ddf19569275268ae25a28517a75c5cdb5c4c6eae4bb490f32fd2f168f419981c48f0ed40fcc98705e5cff7e4bf3fd5478f0e4aff293fafd3089c52ed832cc397bdeab0b80a01012e3b76fea3b55084c87530a23ac1dafeb18e4749620b963534d48cb37087b107578aff58fcf3a39c767ca322d81fdc461504eb651f4de520bee08624b66f6604a8f1425d0250aab20578f8b5444776fbcf307e1a05f3b4481dc50a89121856f3493c75ef615f0e58b58eb0cdb53434436dbb76bd2277bf0a7c0ab11e559a0099e528efaf150d5addb786bbc1803c73aee6c66ff2dd6f943860d9b5042aabfff2e1fad3a900ef139d84297c2fc18b86059b0ddf5f30a37d78943c76722b743cd810bc9e74d38e663086472879c7b5a9edab05863a5defe5d67fc9d39d40613d1e57252c5b0d5205a5865d506a3df3e1c767e20c149fb9e6e5dde1974920f3888f39421c185feb6fbd46d505f68a96fa94830bb5c51f65a3f309ef99f8b2bd6f0911713f906ff2df9808360a06fb98d1f512f0b4efcf25dccccd409c09c00607a4d97982294968d97204ccca85b7dd251f8c727afaa42ce27c505e6032091da3a6379386ce05242b9d14cd3caea2bacb8c11dafae1232a46fceb9468ed7350ec74a2d645827fdc0c5c5420e765807d1aaf44eb26ee4d308cefbd0b429179057d2e02884702845e191d0313eaa96e80922cfc81e12d437ef35d259575990107d29f18a846f3dfd41109365f11fac9506c84bbe20a895f6c3c16b70ccdf1207d3a4c73e85e2cc45fc19100f067fda2dfd02020d67de349827e313b432ef49babeaf7f8a60249ba2df61829830b7f8a01d1339d33adb77bb581d8ae53b930b2d8bab3eeeff64eac277ce231c32d4d94f83bb1b865051b801f5a6c5487ed299f0269686e04401600bbf8c6cfa666a2a4cdc2a712b3ec0901a28065a94e3cad4f3b70f2a05d87a69d28c001c5666c11e6c01ffecdf2d61e854547752b11e70ff63768a6bbc8ad6a5cf372366fa0e547191a8263161c56202c5cc7620a4789631a36d999b00465f9c509f32e0c550a288b766b2225e64ca784162dab7521478f2d5181e923468c60ce4324017aee63fea2beb809a54d85443e4914ab28f59fb37a68c244d5a328e15b321cce3be7333c5c5659f84e2e336d05c537585240282b677f7c57ad34d5cc4f7fc8cf274f9e8fcbf07a5af474a609f59998e7907932cb1066cd5cb27358f27ef40eed9678d467257e287f64d766940a92d1fb28381cf6a882140bab0c4fc1fae2caedf8a1b2f3534cc2195d853c77b9a90d65f8fda293fe920d4a3f34c36efb47aa53f5287573fa1f59cb84a6b7e0a383e7a850cbf200478df238edddd68b216c711f3f5dc17c635ca28753995ab1be7029f1074cd0ee96b57a8328711bb3728d29d1ea634fcb7bb07e2526cd22fc8692d45db2040eff1ad8318802b31359e221760fa50342b62ad22a6af9083ae2a66ec17dc3828f4831469bf95cb3dc4f5171ddc3afd4e3ee9de5e87e98ac11e9c7d4d4a48f673fb105ea2e4d449de011fe3755c75a9e899be977549f1ffd88ea6559ee0c85d643e17d0a39f14036c1bb10e9645af62805d66ce0ec447fc3b4d356d9e680f90982d5a09197e4dcbc758879e9a7bc95d66d3883d53a9916e4ee8ecf808fb4a048bc53ea3969f6e310b0b0744f7cee114ccebebdc1960d572233c643dace79ccb86b79acd79e45196483d7979d2dcc9c5e07aacc1b83b0055258227d9b0107339ee1d90df67e2f71ba60b0ebf84108fb0b3255fe5accecd88760af55276374bc03b505f7d2f1099337f114a5a24b1c4fdb3e03561c932de2d7b3edded7557e099f5defa9b6d68f3f22d3671e6b283c39812b63d2ac2fdd8539d0837d718d7dc7d23733f9a41592a156e9f784439323c9a7d1392647a1aab3ca12bdad854fc4900a9485a23f5958e4caf4ca87a1ed9d20b4f7ec850346661922ae1e1be004b0634a1d49705cafdbe6dbe62059f067057516926ec5a454bf24b0093005eaaa911a8bbe6e6a69ee01af2eb700f8a5c598d2e65650b1b740a40e98870744ab03d51e8327e18ed2a26d77c088f32252fcb2749b7e674918c55d72402e7b3158bc40db377774599a032dd737d0ab9ffd0619c69028e6dfb9bfc3f164e1a54ee5433787e608f5a36223a9cfe28fd057f762a27e85fbbb9d511a985eda36d1f55b16c35ac0fe39a75bb1450441fd2053bd9d0016a75f570857c5d8293c2975d62a043024f06e0956d0ab2319c884e8ce2a848ccb8a97d3778636d2b1e5530b288207feb6a5a6cba661aafa56a12bb7e22059858370bbc0dcc5964d82f250213b39b2ebfccd94e38d66f4b9f66f415f4e47efe297798c1058b08e1110ecc2373e9ff4df25dd250dab49a9e5ac916fdc5eaae4559906c38b04cd155bef613a9800d8981de30d06460e1d037d3d50936535f4f43e803ed5b81c02fcee3b8c3ff59fa848a2c08cb5be20aceb6f8f0d03946bab66498f0a9c7aafbf6c45d5ec44f35b4c13d237ef9fc2a3fc84d89b981e4d7e9e1cdd9af51530ba6a18f13bfbe90c7edbb6531b1704b56f66a06756501ab8679f785d36dd58a240c7f25b59ff8dd66b8e5047358ca1e9966caf582626766c5d5beb56fdbed0a70c7c2b659d1b921ec6575619c64e25aaa5f974e4ed8fafbc3c7a2f4dba82b687f55cb20bafd178aab45c115f98936dd916fa4dafdea981cea340de0e575d040809ba4c814bd9659f053fda52435c2f3ffcd4d2238d290a6502017330e33433a8c9c354c757a2031de2b4664a0f2304fd25c6cf85d32c3d5aead9391914ecbf875be15712d3f4a7be766ac03c1901089c566053c599ec95e644aa7ede4089cfdfa194635687a00c816326b4eaf05c3b3da7c2633deaf56cbbd5b23b350c64bef867203428217da6b6c5f7a6f3c9c91ec6525c5ee60e2af1efd4f189b19b1050dd893bd934e027e7ece7b44bc0baabc0fd6e1dfd987abe4049d10834dd3fc51b4710c5329563ec9fed287ea7383afa5a58fa0ac8e246d3192085af0c4ca88e54473e7cd5dc3d64c4c0a63a2d62408e7362575fe3ee8effeb1dea259b8048e9a61f4af4ad79bfc4b2a58de71684f2ae57d7532254755887a17fb5e7d910f0ae579bbfd40582bdf831d3650f31513046c7a0e6157f5a61c984752aa6ac088cefadf8fb7417ae8a9fb925a7f3310dec6ff53dc923e4736b3ae9b6684a0b38a532d2b9b9685525006863861d07a69e31b604c790303bc1c88e7726ba76970f1b49e65a9f6d3a19bbe7074cf9bdf6dc3c8552b6a2f2767bb136a4e651df29edcdb0d6a3dde8e7980c47c412cff1cb892f4fecb15aace51faedf32005f4aa25c38614734d4adb37064c25f7d209c684876c79d3c730ede7207f1cf45c1396d66bff2c9c31c390158459d8544b5a308c30602ffe160990bc7b53d0f6b6eaff7ba2bac88a916ee66cb8f7d9a6c3487fce2cb3a29686c3ce6c2336fb12f6bdd843eaab33e5297a1f8dc64b4f1e92e9898ac8837aa635f07abced89e03ec05b57a2e48fac18824926e7fe3babc6685612197c50234a84cae0b569e735dc803b34172c046de7e405ae1b12f3c4bc9e0bf9cfe74a7d97ff271cdadb7d668ae95f829edb59f7aeabea0e670915d44dea175f774fb8ee80499505553aabce12f4d11734517432cea3eeb4f3832dc132240ee42430c1047b04c3813d68ea00a38d52ad412537e5a785b1123a731a3127d82c81748f23c17c7f336fe991d152297e979b712c5f2a35b56dbb011c8e6b68a3105c942f720f8db88dae76e935ee1cfdf86a9091cd30336521cccae4cac2c406c990e86ce89259973414da596b220737596f6e7139606c006894949a26f79f95beddef0615e4e2ea4b5149d2a386beaaaec1d74e2a552e4a5e03c44d679ec18a6b683f4027327c40f62e22252b2000bedfbb150f73c2b8ee107679b482cefb3083db893df7c31f95c5e47d282003261c4cf290b9c3ff57ec3baf0bd83e92e282195f2fe9e40705d14071e9a86d3c818b6a138475d5079a8148d99d08e10286642f0921090b6c07bbc3dca9502ae4925373b76217d29c1cfdc6b193856b4773edb7c32b729839849e9d355a2dedd9640082edf26d8c24c14965c526f1a88aae48c5994bbcc23a52878f801673952596f308d03f40660234df9adaf19444fe96fff624d1f160d860a38671fb0860c6d5f15ae7671c044d737d53b4d77af570417c02f85469eb52e6fac1144fc0bd743eea1b6613d6e30b6f790b6f2d2c8e0f11b29727649f27e2c47df2d80a1d46ca9f61e06e8a60100e178217b83fddbba6c8b3953edd268c4ba34789eb198e03da0e0416b28b5a8c26898d2a387dd8ac5c45c13720f1dd2e66f31b42fd30503a0ca48d8515b85e443ba9d537b52f47554dab9f720248c905994dec8afb2b76a747bf59c422fd8050abd05abb7d491e8583b5927715e84ac240852708bb9e0f9b7e5c4ffdfb010f785f650afecaa3ba9b69a999680a8368f409e9b35b876bde362b096292d986fed1c9dec547fc40fba7e7ac114d3709640a1</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-swup-reload-script src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 整理、保存照片流程</li>
+        <li><strong>作者:</strong> Gregory</li>
+        <li><strong>创建于
+                :</strong> 2024-07-02 12:54:22</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-07-02 12:54:22
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://gregoryli.top/2024/07/02/20240411_workflowofphotos/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                版权所有 &#169 Gregory，禁止转载。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2024/07/02/20240416_tec_IAVSAABB/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">NURBS 区间计算（IA &amp; AA） 与控制点AABB的区间范围差别。</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/07/02/20240411_paper_InjectivityConditionsofRationalB%C3%A9zierSurfaces/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Injectivity conditions of rational Bézier surfaces 阅读</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">整理、保存照片流程</div>
+        
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+            2024&nbsp;&nbsp;<i class="fa-regular fa-computer-classic"></i>&nbsp;&nbsp;<a href="/">Gregory</a>
+        </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.0</a></span>
+        </div>
+        
+        
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+    
+<script src="/js/libs/minimasonry.min.js"></script>
+
+    
+<script src="/js/plugins/masonry.js" type="module"></script>
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>
