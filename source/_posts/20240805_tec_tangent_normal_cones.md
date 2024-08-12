@@ -326,3 +326,13 @@ $$\begin{aligned}&\mathrm{Nrm}(\boldsymbol{P}[s,t],\boldsymbol{P}_s[s,t],\boldsy
 2. 使用本文的方法，直接计算法向锥的控制点。
 
 作者指出，尽管第二种方法能够给出更紧的界，但是计算量更大。因此，作者建议使用第一种方法。
+
+# Loop detection in surface patch intersections
+
+仅关注论文中有关曲面法向锥的部分。
+
+首先计算曲面 $P[s,t]$ 的方向锥 $\mathscr{T}_{s}$ 和 $\mathscr{T}_{t}$，法向锥的轴为两方向锥的叉乘。法向锥的半角为：
+
+$$
+\theta_\perp=\sin^{-1}\left(\frac{\sqrt{\sin^2\theta_s+2\sin\theta_s\sin\theta_t\cos\beta+\sin^2\theta_t}}{\sin\beta}\right)
+$$
