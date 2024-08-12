@@ -103,3 +103,226 @@ $$
 $$
 
 $N(u,v)$ 可看做一条Bezier曲面，其控制点 $n_{ij}$ 为：
+
+
+# HodoGraphs and normals of rational curves and surfaces
+
+## 齐次坐标点之间的方向
+
+定义齐次坐标点为 $P=[X,Y,Z,W]$, 其 Cartesian 坐标为 $\tilde{P}=[\frac{X}{W},\frac{Y}{W},\frac{Z}{W}]$。
+
+定义方向
+
+$$
+Dir(P_1,P_2)=(W_1X_2-X_1W_2,W_1Y_2-Y_1W_2,W_1Z_2-Z_1W_2).
+$$
+
+注意 $Dir()$ 是对齐次坐标定义下的方向，与 Cartesian 坐标方向有所不同。尤其具有如下性质：
+
+$$
+Dir(P_1,P_2)=W_1W_2Dir(\tilde{P}_1,\tilde{P}_2).
+\\
+Dir(kP_1,P_2)=Dir(P_1,kP_2)=kDir(P_1,P_2).
+$$
+
+## 有理 Bezier 曲线的 Hodograph
+
+有理 Bezier 曲线 $P[t]$ 的定义为：
+
+$$
+P[t] = (X[t],Y[t],Z[t],W[t]) = \sum_{i=0}^{n}B_i^n(t)P_i.
+\\
+B_i^n(t) = \binom{n}{i}t^i(1-t)^{n-i}.
+$$
+
+其 Hodograph 为：
+
+$$
+P'[t] = (X'[t],Y'[t],Z'[t],W'[t]) = \sum_{i=0}^{n-1}B_i^{n-1}(t)(P_{i+1}-P_i).
+$$
+
+在 Cartesian 坐标系下，有：
+
+$$
+\frac{d}{dt}\tilde{P}[t] = \frac{d}{dt}\left(\frac{X[t]}{W[t]},\frac{Y[t]}{W[t]},\frac{Z[t]}{W[t]}\right)
+\\
+ = \frac{1}{(W[t])^{2}}(W[t]X^{\prime}[t]-W^{\prime}[t]X[t],W[t]Y^{\prime}[t]-W^{\prime}[t]Y[t],W[t]Z^{\prime}[t]-W^{\prime}[t]Z[t])
+\\
+= \frac{Dir(P[t],P'[t])}{W[t]^2}.
+ $$
+
+ 其中 $W[t]^2$ 是一个缩放函数，而 $Dir(P[t],P'[t])$ 给出了 Cartesian 坐标系下的导数方向。
+
+ 经过一系列推导（主要依赖其次坐标的分配率，将 Berstein 基展开）得到导数的表达式：
+
+ $$
+ \frac{d}{dt}\tilde{P}[t] = \frac{1}{W[t]^2}\sum_{k=0}^{2n-2}B_k^{2n-2}(t)\tilde{H}_k.
+ \\
+ where \quad \tilde{\boldsymbol{H}}_k=\frac1{\binom{2n-2}k}\sum_{i=\max(0,k-n+1)}^{\lfloor k/2\rfloor}(k-2i+1)\binom ni\binom n{k-i+1}\operatorname{Dir}(\boldsymbol{P}_i,\boldsymbol{P}_{k-i+1}).
+ $$
+
+ 若不需要正确的大小，可以将 $W[t]^2$ 省略，得到**导数方向**为：
+
+$$
+\alpha\frac{d}{dt}\tilde{P}[t] = Dir(P[t],P'[t]) = \sum_{k=0}^{2n-2}B_k^{2n-2}(t)\tilde{H}_k.
+\\
+where \quad
+\tilde{\boldsymbol{H}}_k=\frac1{\binom{2n-2}k}\sum_{i=\max(0,k-n+1)}^{\lfloor k/2\rfloor}(k-2i+1)\binom ni\binom n{k-i+1}\operatorname{Dir}(\boldsymbol{P}_i,\boldsymbol{P}_{k-i+1}).
+$$
+
+## 导数方向界
+
+在上式 $\tilde{H}_k$ 中，每个 $Dir(P_i,P_{k-i+1})$ 的系数均为正，因此导数方向被一列向量 $Dir(P_a,P_b) (0\leq a < b\leq n)$ 的凸包所界定。即： 
+
+$$
+Dir(P_a,P_b) = W_aW_bDir(\tilde{P}_a,\tilde{P}_b)=W_aW_b\sum_{i=a}^{b-1}(\tilde{P}_{i+1}-\tilde{P}_i).
+$$
+
+经过推导，得到**有理 Bezier 曲线导数方向的凸包界定与多项式相同**，为 $\tilde{P}_{i+1}-\tilde{P}_i (i=0,\ldots,n-1)$ 的凸包。
+
+## 导数大小界
+
+我们推出导数的上界。首先定义：
+
+$$
+W_{\max} = \max_{0\leq i\leq n}W_i. \\
+W_{\min} = \min_{0\leq i\leq n}W_i. \\
+D_{\max} = \max_{0\leq i\leq n-1}||\tilde{P}_{i+1}-\tilde{P}_i||.
+$$
+
+显然，有：
+
+$$
+W_{\min}\leq W[t]\leq W_{\max},\quad \forall t\in[0,1].
+$$
+
+经过推导，得到导数的上界为：
+
+$$
+||\frac{d}{dt}\tilde{P}[t]||\leq \frac{nW^2_{\max}D_{\max}}{W^2_{\min}}\sum_{k=0}^{2n-2}B_k^{2n-2}(t)=\frac{nW^2_{\max}D_{\max}}{W^2_{\min}}.
+$$
+
+## 有理曲面
+
+其推导过程与有理曲线类似。主要运用如下思想。曲面 $P[s,t]$ 可被表示为：
+
+$$
+P[s,t] = \sum_{i=0}^{m}B_i^m[s]Q_i[t]. \\
+Q_i[t] = \sum_{j=0}^{n}B_j^n[t]P_{ij}.
+$$
+
+其中 $P$ 可以看做一条关于 $s$ 的有理 Bezier 曲线，控制点为$Q_i[t]$。$Q$ 可以看做一条关于 $t$ 的有理 Bezier 曲线。
+
+经过一系列推导，得到导数方向的表达式：
+
+$$
+\mathrm{Dir}(\boldsymbol{P}[s,t],\boldsymbol{P}_s[s,t])=\sum_{k=0}^{2m-2}\sum_{l=0}^{2n}B_k^{2m-2}[s]B_l^{2n}[t]\tilde{\boldsymbol{H}}_{k,l}
+\\
+where 
+\\
+\quad \begin{aligned}\tilde{\boldsymbol{H}}_{k,l}=&\sum_{i=\max(0,k-m+1)}^{\lfloor k/2\rfloor}\sum_{j=\max(0,l-n)}^{\min(l,n)}(k-2i+1)\binom mi\binom m{k-i+1}\binom nj\binom n{l-j}\\
+&\times\mathrm{Dir}(P_{i,j},P_{k-i+1,l-j})\left/\binom{2m-2}k\binom{2n}l.\right.\end{aligned}
+$$
+
+### 导数方向界
+
+尽管上式中推导出 hodograph 具有(2m-1)(2n-1)个控制点，但是导数方向的凸包界定可以由 $m(2n-1)$ 个向量的凸包界定。即：
+
+$$
+\sum_{j=\max(0,l-n)}^{\min(l,n)}\binom{n}{j}\binom{n}{l-j}\operatorname{Dir}(\boldsymbol{P}_{i,j},\boldsymbol{P}_{i+1,l-j})\\(i=0,1,\ldots,m-1; l=0,1,\ldots,2n) .
+$$
+
+### 导数大小界
+
+$$
+\begin{aligned}
+\left\|\frac{\partial}{\partial s}\tilde{\boldsymbol{P}}[s,t]\right\|=& \frac{m}{(W[s,t])^{2}}\Bigg\Vert\sum_{k=0}^{2m-2}(1-t)^{2m-2-k}t^{k} \\
+&\begin{aligned}&\times\sum_{\begin{array}{c}i+j=k+1 \\0\leqslant i\leqslant m-1 \\1\leqslant j \leqslant m\end{array}}\binom{m-1}i\binom{m-1}{j-1}\operatorname{Dir}(\boldsymbol{Q}_i[t],\boldsymbol{Q}_j[t])\\&
+\end{aligned}\Bigg\Vert \\
+\leqslant&\frac{mW_{\max}^{2}}{W_{\min}^{2}}\max_{0\leqslant i\leqslant m-1}\|\tilde{Q}_{i+1}[t]-\tilde{Q}_{i}[t]\|
+\end{aligned}
+$$
+
+其中
+$$
+W_{\max}\equiv\max_{\begin{array}{c}0\leqslant i\leqslant m\\0\leqslant j\leqslant n\end{array}}W_{i,j},\\
+W_{\min}\equiv\min_{\begin{array}{c}0\leqslant i\leqslant m\\0\leqslant j\leqslant n\end{array}}W_{i,j},
+$$
+
+最后得到上界：
+
+$$
+\left\|\frac{\partial}{\partial s}\tilde{\boldsymbol{P}}[s,t]\right\|\leqslant\frac{mW_{\max}^{2}S_{\max}}{W_{\min}^{4}}.
+$$
+
+其中 $S_{\max}$ 为以下 $m(2n-1)$ 个向量的凸包的最大长度：
+
+$$
+\frac{1}{\binom{2n}{l}}\sum_{j=\max(0,l-n)}^{\min(l,n)}\binom{n}{j}\binom{n}{l-j}\operatorname{Dir}(\boldsymbol{P}_{i,j},\boldsymbol{P}_{i+1,l-j})\\(i=0,1,\ldots,m-1; l=0,1,\ldots,2n) ,
+$$
+
+### 法向方向
+
+单靠导数的叉乘，法向方向的阶数为 $(4m-2)\times(4n-2)$，但是本文证明了法向方向的阶数可以降为 $(3m-2)\times(3n-2)$。
+
+首先定义其次坐标下的法向方向：
+
+$$
+\mathrm{Nrm}(\boldsymbol{P}_{1},\boldsymbol{P}_{2},\boldsymbol{P}_{3})\equiv\left(\left|\begin{array}{ccc}Y_{1}&Y_{2}&Y_{3}\\Z_{1}&Z_{2}&Z_{3}\\W_{1}&W_{2}&W_{3}\end{array}\right|,\left|\begin{array}{ccc}Z_{1}&Z_{2}&Z_{3}\\X_{1}&X_{2}&X_{3}\\W_{1}&W_{2}&W_{3}\end{array}\right|,\left|\begin{array}{ccc}X_{1}&X_{2}&X_{3}\\Y_{1}&Y_{2}&Y_{3}\\W_{1}&W_{2}&W_{3}\end{array}\right|\right)
+$$
+
+其有几个特殊性质：
+
+$$
+\operatorname{Nrm}(k\boldsymbol{P}_{1},\boldsymbol{P}_{2},\boldsymbol{P}_{3})=\operatorname{Nrm}(\boldsymbol{P}_{1},k\boldsymbol{P}_{2},\boldsymbol{P}_{3})=\operatorname{Nrm}(\boldsymbol{P}_{1},\boldsymbol{P}_{2},k\boldsymbol{P}_{3})=k\operatorname{Nrm}(\boldsymbol{P}_{1},\boldsymbol{P}_{2},\boldsymbol{P}_{3})\\
+$$
+
+$$
+\mathsf{Nrm}(\boldsymbol{P}_{1}+\boldsymbol{P}_{2},\boldsymbol{P}_{3},\boldsymbol{P}_{4})=\mathsf{Nrm}(\boldsymbol{P}_{1},\boldsymbol{P}_{3},\boldsymbol{P}_{4})+\mathsf{Nrm}(\boldsymbol{P}_{2},\boldsymbol{P}_{3},\boldsymbol{P}_{4})
+$$
+$$
+\mathsf{Nrm}(\boldsymbol{P}_{1},\boldsymbol{P}_{2}+\boldsymbol{P}_{3},\boldsymbol{P}_{4})=\mathsf{Nrm}(\boldsymbol{P}_{1},\boldsymbol{P}_{2},\boldsymbol{P}_{4})+\mathsf{Nrm}(\boldsymbol{P}_{1},\boldsymbol{P}_{3},\boldsymbol{P}_{4})
+$$
+$$
+Nrm( \boldsymbol{P}_{1}, \boldsymbol{P}_{2}, \boldsymbol{P}_{3}+ \boldsymbol{P}_{4}) =Nrm( \boldsymbol{P}_{1}, \boldsymbol{P}_{2}, \boldsymbol{P}_{3}) +Nrm( \boldsymbol{P}_{1}, \boldsymbol{P}_{2}, \boldsymbol{P}_{4})
+$$
+
+而在 $P[s,t]$ 处的法向方向为：
+
+$$
+Nrm(\boldsymbol{P}[s,t],\boldsymbol{P}_s[s,t],\boldsymbol{P}_t[s,t])
+$$
+
+为方便计算，我们定义 $S_{ij}$ 为：
+
+$$
+\begin{aligned}S_{00}&\equiv\sum_{i=0}^{m-1}\sum_{j=0}^{n-1}B_{i}^{n-1}[s]B_{j}^{n-1}[t]\boldsymbol{P}_{i,j},\quad&S_{01}&\equiv\sum_{i=0}^{m-1}\sum_{j=1}^{n}B_{i}^{m-1}[s]B_{j-1}^{n-1}[t]\boldsymbol{P}_{i,j}
+\\
+S_{10}&\equiv\sum_{i=1}^{m}\sum_{j=0}^{n-1}B_{i-1}^{m-1}[s]B_{j}^{n-1}[t]\boldsymbol{P}_{i,j},\quad&S_{11}&\equiv\sum_{i=1}^{m}\sum_{j=1}^{n}B_{i-1}^{m-1}[s]B_{j-1}^{n-1}[t]\boldsymbol{P}_{i,j}.\end{aligned}
+$$
+
+则 $P, P_s, P_t$ 可以使用 $S_{ij}$ 表示：
+
+$$
+\begin{aligned}
+&\boldsymbol{P}[s,t] =(1-s)(1-t) S_{00}+s(1-t) S_{10}+(1-s)t S_{01}+st S_{11} \\
+&P_{s}[s,t] =m\sum_{i=0}^{m-1}\sum_{j=0}^nB_i^{m-1}\left[s\right]B_j^n[t]\left(P_{i+1,j}-P_{i,j}\right) \\
+&=m[(1-t)S_{10}+tS_{11}-(1-t)S_{00}-tS_{01}], \\
+&\boldsymbol{P}_{t}[s,t] =n\sum_{i=0}^m\sum_{j=0}^{n-1}B_i^m[s]B_j^{n-1}[t](P_{i,j+1}-P_{i,j}) \\
+&=n[(1-s)\mathbf{S}_{01}+s\mathbf{S}_{11}-(1-s)\mathbf{S}_{00}-s\mathbf{S}_{10}].
+\end{aligned}
+$$
+
+经过一系列推导，得到法向方向的表达式：
+
+$$\begin{aligned}&\mathrm{Nrm}(\boldsymbol{P}[s,t],\boldsymbol{P}_s[s,t],\boldsymbol{P}_t[s,t])\\&=mn[(1-s)(1-t)\mathrm{~Nrm}(S_{00},S_{10},S_{01})+s(1-t)\mathrm{~Nrm}(S_{00},S_{10},S_{11})\\&+(1-s)t\mathrm{~Nrm}(S_{00},S_{11},S_{01})+st\mathrm{~Nrm}(S_{10},S_{11},S_{01})].\end{aligned}$$
+
+### 法向方向界
+
+有两种方法计算法向范围：
+
+1. 使用 Sederberg 和 Meyers 的方法，先计算导数的方向锥，然后使用叉乘计算法向锥。需要计算 $m(2n-1)+n(2m-1)$ 个向量。
+
+2. 使用本文的方法，直接计算法向锥的控制点。
+
+作者指出，尽管第二种方法能够给出更紧的界，但是计算量更大。因此，作者建议使用第一种方法。
