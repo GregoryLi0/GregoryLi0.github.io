@@ -46,7 +46,16 @@ $$
 我们考虑三维空间中的参数曲面 $S(u,v)$，其中 $u,v\in[a,b]$。我们可以将 $S(u,v)$ 看做一个从 $[a,b]\times[a,b]$ 到 $\mathbb{R}^3$ 的映射。那么， $S(u,v)$ 的 Lipschitz 常数定义为：
 
 $$
-\|S(u_1,v_1)-S(u_2,v_2)\|\leq L\|(u_1,v_1)-(u_2,v_2)\|_2.
+\|S(u_1,v_1)-S(u_2,v_2)\|\leq L\|(u_1,v_1)-(u_2,v_2)\|.
+$$
+
+可推导：
+
+$$
+L=\max\left(\frac{\|S(u_1,v_1)-S(u_2,v_2)\|}{\|(u_1,v_1)-(u_2,v_2)\|}\right)= \max\left(\frac{\|S(u_1,v_1)-S(u_2,v_2)\|}{\sqrt{(u_2-u_1)^2+(v_2-v_1)^2}}\right)
+$$
+$$
+\geq\max\left(\frac{\|S(u_1,v_1)-S(u_2,v_2)\|}{|u_2-u_1|+|v_2-v_1|}\right)
 $$
 
 一个冗余的 Lipschitz 常数计算公式为：
@@ -54,6 +63,9 @@ $$
 $$
 L=\sqrt{\max(S_u)^2+\max(S_v)^2}.
 $$
+
+只需证明$\sqrt{\max(S_u)^2+\max(S_v)^2}\geq\max\left(\frac{\|S(u_1,v_1)-S(u_2,v_2)\|}{\|(u_1,v_1)-(u_2,v_2)\|}\right)$, 则可将其作为冗余的 Lipshcitz 常数。
+
 
 其中 $S_u$ 和 $S_v$ 分别是 $S(u,v)$ 对 $u$ 和 $v$ 的偏导数。
 
@@ -93,17 +105,3 @@ $$
 
 问题：Lipschitz 常数和这者有何关系？
 
-
-********
-***以下推导由AI帮手完成***
-
-我们考虑三维空间中的参数曲面 $S(u,v)$，其中 $u,v\in[a,b]$。我们可以将 $S(u,v)$ 看做一个从 $[a,b]\times[a,b]$ 到 $\mathbb{R}^3$ 的映射。那么，我们可以定义 $S(u,v)$ 的 Lipschitz 常数为：
-
-$$
-L=\max_{(u,v)\in[a,b]\times[a,b]}\|S_u(u,v)\times S_v(u,v)\|.
-$$
-
-其中 $S_u(u,v)$ 和 $S_v(u,v)$ 分别是 $S(u,v)$ 对 $u$ 和 $v$ 的偏导数。
-
-********
-***推导结束***
