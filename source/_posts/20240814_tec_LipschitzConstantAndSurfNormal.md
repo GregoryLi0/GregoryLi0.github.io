@@ -105,3 +105,10 @@ $$
 
 问题：Lipschitz 常数和这者有何关系？
 
+## Lipschitz 加成下的 Marching Method
+
+相比于传统的 Marching Method，其特点有：
+
+1. 使用BVH对两曲面进行细分，在每个子域上计算Lioschitz常数, 以此辅助计算步长；
+
+2. 该 Marching Method 必须有st uv参数坐标；

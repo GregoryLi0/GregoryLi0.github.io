@@ -122,6 +122,45 @@ $$
 
     - 两曲面法向锥不重合。
 
+## 追踪法(Marching)
+
+**适用情况**：一条交线上的一个点已知，需要计算整条交线
+
+**步骤**：
+
+1. 预测一个交点
+
+2. 将交点约束到曲线上
+
+3. 验证新交点。主要验证与上一个点的切线方向。参数点和三维空间点都需要验证。
+
+4. 验证交线拟合质量
+
+## 迭代方向选取
+
+$$
+s_{i+1}=s_i\pm\triangle w\left(\mathbf{p}_t\cdot\mathbf{n}_q\right)f(w)
+$$
+$$
+t_{i+1}=t_i\mp\triangle w\left(\mathbf{p}_s\cdot\mathbf{n}_q\right)f(w).
+$$
+
+$$
+u_{i+1}=u_i\mp\triangle w\left(\mathbf{q}_v\cdot\mathbf{n}_p\right)g(w)
+$$
+$$v_{i+1}=v_i\pm\triangle w\left(\mathbf{q}_u\cdot\mathbf{n}_p\right)g(w).
+$$
+
+## 交点约束
+
+若行进前后的点为 $c_i$ 和 $c_{i+1}$，则约束条件为：
+
+1. 曲面 $S$
+
+2. 曲面 $T$
+
+3. 平面 $A$: 由迭代后点 $c_{i+1}$，和迭代前导数方向 $c_i'$ 确定。
+
 ## s1310 理解
 
 epsge: 几何分辨率
@@ -131,3 +170,4 @@ maxstep: 最大步长
 // 作用: 追踪交点
 //输入
 ```
+## s9iterate
