@@ -13,7 +13,6 @@ date: 2024-04-22
 ![20240422-10](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20240422-daheishiyingguanghai/20240422-10.jpg "20240422-10")
 ![20240422-2](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20240422-daheishiyingguanghai/20240422-2.jpg "20240422-2")
 ![20240422-3](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20240422-daheishiyingguanghai/20240422-3.jpg "20240422-3")
-![20240422-4](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20240422-daheishiyingguanghai/20240422-4.jpg "20240422-4")
 ![20240422-5](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20240422-daheishiyingguanghai/20240422-5.jpg "20240422-5")
 ![20240422-6](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20240422-daheishiyingguanghai/20240422-6.jpg "20240422-6")
 ![20240422-7](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20240422-daheishiyingguanghai/20240422-7.jpg "20240422-7")

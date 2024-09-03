@@ -17,4 +17,3 @@ date: 2024-04-21
 ![20240421-26](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/240421-daheishan/20240421-26.jpg "20240421-26")
 ![20240421-27](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/240421-daheishan/20240421-27.jpg "20240421-27")
 ![20240421-3](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/240421-daheishan/20240421-3.jpg "20240421-3")
-![20240421-4](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/240421-daheishan/20240421-4.jpg "20240421-4")

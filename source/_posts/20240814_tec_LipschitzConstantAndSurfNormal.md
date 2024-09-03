@@ -53,7 +53,7 @@ $$
 
 $$
 L=\max\left(\frac{\|S(u_1,v_1)-S(u_2,v_2)\|}{\|(u_1,v_1)-(u_2,v_2)\|}\right)= \max\left(\frac{\|S(u_1,v_1)-S(u_2,v_2)\|}{\sqrt{(u_2-u_1)^2+(v_2-v_1)^2}}\right)
-$$
+$$2
 $$
 \geq\max\left(\frac{\|S(u_1,v_1)-S(u_2,v_2)\|}{|u_2-u_1|+|v_2-v_1|}\right)
 $$

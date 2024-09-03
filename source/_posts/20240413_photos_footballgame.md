@@ -28,5 +28,3 @@ date: 2024-04-13
 ![20240413-7](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20240413_daliansuoyuwanfootballgame/20240413-7.jpg "20240413-7")
 ![20240413-8](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20240413_daliansuoyuwanfootballgame/20240413-8.jpg "20240413-8")
 ![20240413-9](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20240413_daliansuoyuwanfootballgame/20240413-9.jpg "20240413-9")
-![20240421-100](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20240413_daliansuoyuwanfootballgame/b12572a888af6fb6339f6e37bab21ad.jpg "20240421-100")
-![20240421-101](https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/20240413_daliansuoyuwanfootballgame/b95052a20536460fe908bc066922524.jpg "20240421-101")
