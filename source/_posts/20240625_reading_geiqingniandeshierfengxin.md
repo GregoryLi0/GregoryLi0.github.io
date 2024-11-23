@@ -1,5 +1,5 @@
 ---
-title: 《给青年的十二封信》读后感
+title: 《给青年的十二封信》笔记
 cover_image: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/books.jpeg
 thumbnail: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/books.jpeg
 category: 读书
