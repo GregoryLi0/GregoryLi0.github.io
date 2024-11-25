@@ -1,5 +1,5 @@
 ---
-title: 《纳瓦尔宝典》读后感
+title: 《纳瓦尔宝典》笔记
 cover_image: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/books.jpeg
 thumbnail: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/books.jpeg
 category: 读书

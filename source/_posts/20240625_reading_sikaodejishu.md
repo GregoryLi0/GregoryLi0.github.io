@@ -1,5 +1,5 @@
 ---
-title: 《思考的技术》读后感
+title: 《思考的技术》笔记
 cover_image: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/books.jpeg
 thumbnail: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/books.jpeg
 category: 读书

@@ -1,5 +1,5 @@
 ---
-title: 《货币的界碑》读后感
+title: 《货币的界碑》笔记
 cover_image: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/books.jpeg
 thumbnail: https://gregorygallery.oss-cn-beijing.aliyuncs.com/img/books.jpeg
 category: 读书
