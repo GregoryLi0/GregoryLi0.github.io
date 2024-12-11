@@ -8,7 +8,7 @@ tags:
     - "彼得-考夫曼"
     - "穷查理宝典"
     - "Poor Charlie's Almanack"
-    - "五星好评"
+    - "五星"
 date: 2024-09-29
 ---
 
