@@ -46,20 +46,18 @@ $$
   \dot{u}_{\min} \leq \dot{u}(t) \leq \dot{u}_{\max}, \quad
   \dot{v}_{\min} \leq \dot{v}(t) \leq \dot{v}_{\max}.
   $$
-  计算方法: 计算 $ C(t) $ 的 Hodograph 曲线 $ H(t)$, 计算控制点的 u, v 最大最小值。
+  计算方法: 计算 $ C(t) $ 的 Hodograph 曲线 $ H(t)$, 计算控制点的 u, v 最大最小值。（此处$\dot{u}$和$\dot{v}$是模长的范围，恒大于0。如[-2,1]->[0,2]）
 - 切向量模长范围：
   $$
   \|\mathbf{f}_u\|_{\min} \leq \|\mathbf{f}_u\| \leq \|\mathbf{f}_u\|_{\max}, \quad
   \|\mathbf{f}_v\|_{\min} \leq \|\mathbf{f}_v\| \leq \|\mathbf{f}_v\|_{\max}.
   $$
-- $ F $ 的最大值最小值为: 
+- $ F $ 定义为: 
 
-    $$ F_{\max} = \|\mathbf{f}_u\|_{\max}\| \mathbf{f}_v\|_{\max} \cos\theta_{\min} ，\theta_{\min}=\theta_{Axis_u,Axis_v}-\theta_{u}-\theta_{v} $$
-
-    $$ \text{if} \quad \cos\theta_{\max} \leq 0 , \quad F_{\min} = \|\mathbf{f}_u\|_{\max}\| \mathbf{f}_v\|_{\max} \cos\theta_{\max} $$
-    $$ \text{if} \quad \cos\theta_{\max} > 0 , \quad F_{\min} = \|\mathbf{f}_u\|_{\min}\| \mathbf{f}_v\|_{\min} \cos\theta_{\max} $$
-
-    要考虑u,v方向锥的对偶锥，以使得 $ F=\|\mathbf{f}_u\| \|\mathbf{f}_v\| \cos\theta $ 最大或最小。
+  $$
+  F = \mathbf{f}_u \cdot \mathbf{f}_v = \|\mathbf{f}_u\| \|\mathbf{f}_v\| \cos\theta 
+  $$
+  其中 $\theta$ 是 $ \mathbf{f}_u $ 和 $ \mathbf{f}_v $ 的夹角, 由方向锥夹角给定。
 
 ##### **(1) 速度的最小值**
 $$
@@ -79,4 +77,4 @@ $$
 s_{\max} = V_{\max} (t_2 - t_1).
 $$
 
-该估计给出了测地距离的严格界，其中 $ V_{\max} $ 的额外项 $ 2F_{\max} \dot{u}_{\max} \dot{v}_{\max} $ 反映了参数方向间的耦合程度。
+该估计给出了测地距离的严格界，其中 $ V $ 的额外项 $ 2F \dot{u} \dot{v} $ 反映了参数方向间的正交/耦合程度。
